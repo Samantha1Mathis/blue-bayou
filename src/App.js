@@ -1,4 +1,5 @@
 import logo from "./logo.svg";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./pages";
 import info from "./pages/info";
@@ -10,18 +11,19 @@ import togo from "./pages/togo";
 import reservations from "./pages/reservations";
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" component={Home} exact />
-        <Route path="/info" component={info} exact />
-        <Route path="/contact" component={contact} exact />
-        <Route path="/togo" component={togo} exact />
-        <Route path="/reservations" component={reservations} exact />
-        <Route path="/menu" component={menu} exact />
-        <Route path="/payment" component={payment} exact />
-        <Route path="/complete" component={complete} exact />
-      </Switch>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />}>
+          <Route path="/info" element={<info />} />
+          <Route path="/contact" element={<contact />} />
+          <Route path="/togo" element={<togo />} />
+          <Route path="/reservations" element={<reservations />} />
+          <Route path="/menu" element={<menu />} />
+          <Route path="/payment" element={<payment />} />
+          <Route path="/complete" element={<complete />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

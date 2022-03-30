@@ -11,7 +11,10 @@
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-router": "^6.2.2",
+<<<<<<< HEAD
     "react-router-dom": "^6.2.2",
+=======
+>>>>>>> b40cc40054990272d0e62fc8455e098990552354
     "react-scripts": "5.0.0",
     "style-loader": "^3.3.1",
     "svg-url-loader": "^7.1.1",

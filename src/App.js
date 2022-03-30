@@ -1,29 +1,32 @@
-import logo from "./logo.svg";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from "react";
+import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Home from "./pages";
-import info from "./pages/info";
-import menu from "./pages/menu";
-import complete from "./pages/complete";
-import payment from "./pages/payment";
-import contact from "./pages/contact";
-import togo from "./pages/togo";
-import reservations from "./pages/reservations";
+import Index from "./pages";
+import Home from "./pages/home";
+import Info from "./pages/info";
+import Menu from "./pages/menu";
+import Complete from "./pages/complete";
+import Payment from "./pages/payment";
+import Contact from "./pages/contact";
+import Togo from "./pages/togo";
+import Reservations from "./pages/reservations";
+
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
-        <Route path="/" element={<Home />}>
-          <Route path="/info" element={<info />} />
-          <Route path="/contact" element={<contact />} />
-          <Route path="/togo" element={<togo />} />
-          <Route path="/reservations" element={<reservations />} />
-          <Route path="/menu" element={<menu />} />
-          <Route path="/payment" element={<payment />} />
-          <Route path="/complete" element={<complete />} />
+        <Route path="/" element={<Index />}>
+          <Route path="" element={<Home />} />
+          <Route path="info" element={<Info />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="togo" element={<Togo />} />
+          <Route path="reservations" element={<Reservations />} />
+          <Route path="menu" element={<Menu />} />
+          <Route path="payment" element={<Payment />} />
+          <Route path="complete" element={<Complete />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

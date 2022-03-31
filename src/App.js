@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css'
 import Home from "./pages";
 import info from "./pages/info";
 import menu from "./pages/menu";

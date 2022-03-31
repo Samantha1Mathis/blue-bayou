@@ -7,6 +7,7 @@ module.exports = {
   },
   devServer: {
     port: 3000,
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -16,7 +17,10 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: [["@babel/preset-env"], ["@babel/preset-react", { runtime: "automatic" }]],
+            presets: [
+              ["@babel/preset-env"],
+              ["@babel/preset-react", { runtime: "automatic" }],
+            ],
           },
         },
       },

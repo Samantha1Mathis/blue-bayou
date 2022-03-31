@@ -1,28 +1,32 @@
-import logo from "./logo.svg";
+import React from "react";
+import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import 'bootstrap/dist/css/bootstrap.min.css'
-import Home from "./pages";
-import info from "./pages/info";
-import menu from "./pages/menu";
-import complete from "./pages/complete";
-import payment from "./pages/payment";
-import contact from "./pages/contact";
-import togo from "./pages/togo";
-import reservations from "./pages/reservations";
+import Index from "./pages";
+import Home from "./pages/home";
+import Info from "./pages/info";
+import Menu from "./pages/menu";
+import Complete from "./pages/complete";
+import Payment from "./pages/payment";
+import Contact from "./pages/contact";
+import Togo from "./pages/togo";
+import Reservations from "./pages/reservations";
+
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" component={Home} exact />
-        <Route path="/info" component={info} exact />
-        <Route path="/contact" component={contact} exact />
-        <Route path="/togo" component={togo} exact />
-        <Route path="/reservations" component={reservations} exact />
-        <Route path="/menu" component={menu} exact />
-        <Route path="/payment" component={payment} exact />
-        <Route path="/complete" component={complete} exact />
-      </Switch>
-    </Router>
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<Index />}>
+          <Route path="" element={<Home />} />
+          <Route path="info" element={<Info />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="togo" element={<Togo />} />
+          <Route path="reservations" element={<Reservations />} />
+          <Route path="menu" element={<Menu />} />
+          <Route path="payment" element={<Payment />} />
+          <Route path="complete" element={<Complete />} />
+        </Route>
+      </Routes>
+    </HashRouter>
   );
 }
 

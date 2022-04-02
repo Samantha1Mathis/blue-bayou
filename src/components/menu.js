@@ -4,24 +4,33 @@ import { HashLink as Link } from "react-router-hash-link";
 import menuData from "../data/menu";
 import "./menu.css";
 
-export function Menu() {
+export function Menu(props) {
   let lunchKeys = Object.keys(menuData.Lunch);
   let dinnerKeys = Object.keys(menuData.Dinner);
 
-  let [activeKeys, setActiveKeys] = React.useState(lunchKeys);
-  let [currentMenu, setCurrentMenu] = React.useState("Lunch");
+  let [activeKeys, setActiveKeys] = React.useState([]);
+  let [currentMenu, setCurrentMenu] = React.useState("");
 
-  let changeActiveKeys = (title) => {
-    setCurrentMenu(title);
-    setActiveKeys(title === "Lunch" ? lunchKeys : dinnerKeys);
-  };
+  let changeActiveKeys = React.useCallback(
+    (title) => {
+      setCurrentMenu(title);
+      setActiveKeys(title === "Lunch" ? lunchKeys : dinnerKeys);
+    },
+    [dinnerKeys, lunchKeys]
+  );
+
+  React.useEffect(() => {
+    let defaultMenu = props.defaultMenu || "Lunch";
+    setCurrentMenu(defaultMenu);
+    changeActiveKeys(defaultMenu);
+  }, [props]);
 
   return (
     <div className="menu-container">
       <h1>Menu</h1>
       <Tabs
         onSelect={(eventKey) => changeActiveKeys(eventKey)}
-        defaultActiveKey="Lunch"
+        activeKey={currentMenu}
         id="time-of-day-menu"
       >
         <Tab eventKey="Lunch" title="Lunch"></Tab>

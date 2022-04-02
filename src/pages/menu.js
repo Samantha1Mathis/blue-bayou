@@ -1,5 +1,6 @@
 import React from "react";
+import { Menu } from "../components/menu";
 
-export default function Menu() {
-  return <h1>Menu</h1>;
+export default function MenuPage() {
+  return <Menu />;
 }

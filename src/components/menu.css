@@ -1,0 +1,59 @@
+.menu-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-item-container {
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    position: fixed;
+}
+
+.menu-item-container::-webkit-scrollbar {
+    display: none;
+}
+
+.menu-item-field {
+    width: 225px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.menu-section-header {
+    width: 100%;
+    margin: 10px;
+    text-align: center;
+    background-color: rgba(95, 158, 160, 0.4);
+    border-radius: 5px;
+}
+
+.meal-container {
+    width: 100%;
+}
+
+.meal-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.meal-name {
+    width: 100%;
+    font-size: 24px;
+}
+
+.meal-price {
+    font-weight: bold;
+    text-align: right;
+    min-width: 110px;
+}
+
+.meal-description {
+    color: rgb(89, 89, 89);
+}

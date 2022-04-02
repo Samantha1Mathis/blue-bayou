@@ -8,7 +8,7 @@
 }
 
 .menu-item-container {
-    width: 50%;
+    width: 100%;
     overflow-x: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -27,7 +27,7 @@
 }
 
 .menu-section-header {
-    width: 50%;
+    width: 100%;
     margin: 10px;
     text-align: center;
     background-color: rgba(95, 158, 160, 0.4);
@@ -35,7 +35,7 @@
 }
 
 .meal-container {
-    width: 50%;
+    width: 100%;
 }
 
 .meal-row {

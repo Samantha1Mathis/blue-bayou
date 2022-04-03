@@ -7,10 +7,9 @@ import img5 from "../images/home-images/rsz_img_5850-1-2.jpg";
 import img6 from "../images/home-images/39512467_1070729289743370_4924584105451978752_n-1.jpg";
 import Carousel from "react-bootstrap/Carousel";
 import Button from "react-bootstrap/Button";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Container from "react-bootstrap/Container";
+import { NavbarCustom } from "../components/navbar";
 import "../index.css";
+import { Menu } from "../components/menu";
 export default function Home() {
   return (
     <>
@@ -73,28 +72,14 @@ export default function Home() {
           </div>
         </Carousel.Item>
       </Carousel>
-      <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
-        <Container>
-          <Navbar.Brand href="">Blue Bayou</Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto"></Nav>
-            <Nav>
-              <Nav.Link href="#/togo">To go</Nav.Link>
-              <Nav.Link href="#/reservations">Reservations</Nav.Link>
-              <Nav.Link href="#/info">Info</Nav.Link>
-              <Nav.Link href="#/contact">Contact</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      <NavbarCustom />
       <div className="text-center">
         <h2>Hours</h2>
         <p>Lunch: 11am - 3:55pm</p>
         <p>Dinner: 4pm - 10pm</p>
       </div>
-      <div className="text-center">
-        Add Menu Component here
+      <div className="text-center home-img" style={{ width: "50%" }}>
+        <Menu />
         <br></br>
         <br></br>
       </div>

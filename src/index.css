@@ -16,25 +16,6 @@ div {
   position: relative !important;
 }
 
-.reservations{
-  text-align: center;
-
-}
-.home-img{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-
-.home-img2 {
-  float: right;
-}
-
-.carousel {
-  background-color: grey;
-}
-
 .bottom-left-info-page {
   float: left;
 }

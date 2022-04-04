@@ -5,7 +5,7 @@ import MenuItem from "./menuItem";
 import MealInformation from "./mealInformation";
 import CustomAccordion from "./customAccordion";
 import menuData from "../data/menu";
-import "./menu.css";
+import "../styles/components/menu.css";
 
 export function Menu(props) {
   let lunchKeys = Object.keys(menuData.Lunch);

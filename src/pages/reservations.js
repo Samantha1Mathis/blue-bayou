@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { NavbarCustom } from "../components/navbar";
 import Button from "react-bootstrap/Button";
+
 export default function Reservations() {
   const [date, setDate] = useState(new Date());
   const d = new Date();

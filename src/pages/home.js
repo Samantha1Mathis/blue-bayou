@@ -6,10 +6,10 @@ import img4 from "../images/home-images/BlueBayouCover-Pugh.jpg";
 import img5 from "../images/home-images/rsz_img_5850-1-2.jpg";
 import img6 from "../images/home-images/39512467_1070729289743370_4924584105451978752_n-1.jpg";
 import Carousel from "react-bootstrap/Carousel";
-import Button from "react-bootstrap/Button";
 import { NavbarCustom } from "../components/navbar";
-import "../index.css";
+import "../styles/pages/home.css";
 import { Menu } from "../components/menu";
+
 export default function Home() {
   return (
     <>

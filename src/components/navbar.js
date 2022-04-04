@@ -2,6 +2,8 @@ import React from "react";
 import { Tabs, Tab, Navbar, Container, Nav } from "react-bootstrap";
 import { HashLink as Link } from "react-router-hash-link";
 import pirate from "../images/home-images/png-transparent-piracy-jolly-roger-pirate-hat-logo-jolly-roger-skull-and-crossbones-thumbnail.png";
+import "../styles/components/navbar.css";
+
 export function NavbarCustom(props) {
   return (
     <Navbar

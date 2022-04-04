@@ -36,6 +36,11 @@
 
 .meal-container {
     width: 100%;
+    border-radius: 5px;
+}
+
+.meal-container:hover {
+    background-color: rgba(95, 158, 160, 0.4);
 }
 
 .meal-row {

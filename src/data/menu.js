@@ -133,7 +133,7 @@ let menuData = {
         price: "$13.00",
         ingredients:
           "served with choice of two (2) Selections and choice of Small Lowfat Milk or Small DASANI® Water",
-        picture: "kids_beed_special.jph",
+        picture: "kids_beef_special.jpg",
       },
       {
         name: "Chicken Breast",
@@ -151,14 +151,14 @@ let menuData = {
         description: "5oz",
         price: "$11.00",
         ingredients: "",
-        picture: "miney_family_winery_wines.jpg",
+        picture: "miner_family_winery_wines.jpg",
       },
       {
         name: "J. Wilkes, Cabernet Sauvignon, Paso Robles Highlands District, CA",
         description: "5oz",
         price: "$11.00",
         ingredients: "",
-        picture: "j_wilkes_wine.jpg",
+        picture: "j_wilkes_wine.png",
       },
     ],
     "Sparkling Wine": [
@@ -167,7 +167,7 @@ let menuData = {
         description: "Glass",
         price: "$10.00",
         ingredients: "",
-        picture: "courtage_win.png",
+        picture: "courtage_wine.png",
       },
     ],
     "Wine Tasting Selection": [
@@ -250,7 +250,7 @@ let menuData = {
         description: "Covington, LA (ABV 4.5%)",
         price: "$12.50",
         ingredients: "",
-        picture: "abita_amber.jpg",
+        picture: "abita_amber.png",
       },
     ],
     "Non-Alcoholic Beverages": [
@@ -452,7 +452,7 @@ let menuData = {
         price: "$13.00",
         ingredients:
           "served with choice of two (2) Selections and choice of Small Lowfat Milk or Small DASANI® Water",
-        picture: "kids_beed_special.jph",
+        picture: "kids_beef_special.jpg",
       },
       {
         name: "Chicken Breast",
@@ -470,14 +470,14 @@ let menuData = {
         description: "5oz",
         price: "$11.00",
         ingredients: "",
-        picture: "miney_family_winery_wines.jpg",
+        picture: "miner_family_winery_wines.jpg",
       },
       {
         name: "J. Wilkes, Cabernet Sauvignon, Paso Robles Highlands District, CA",
         description: "5oz",
         price: "$11.00",
         ingredients: "",
-        picture: "j_wilkes_wine.jpg",
+        picture: "j_wilkes_wine.png",
       },
     ],
     "Sparkling Wine": [
@@ -486,7 +486,7 @@ let menuData = {
         description: "Glass",
         price: "$10.00",
         ingredients: "",
-        picture: "courtage_win.png",
+        picture: "courtage_wine.png",
       },
     ],
     "Wine Tasting Selection": [
@@ -569,7 +569,7 @@ let menuData = {
         description: "Covington, LA (ABV 4.5%)",
         price: "$12.50",
         ingredients: "",
-        picture: "abita_amber.jpg",
+        picture: "abita_amber.png",
       },
     ],
     "Non-Alcoholic Beverages": [

@@ -60,3 +60,15 @@ div {
   background-color: gray;
   color:white;
 }
+
+.contact-page-div {
+  align-items: center;
+  width:50%;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.contact-page-form-group {
+  margin: 15px;
+}

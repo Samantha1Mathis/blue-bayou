@@ -1,7 +1,10 @@
+const path = require("path");
+const webpack = require("webpack");
+
 module.exports = {
   entry: "./src/index.js",
   output: {
-    path: __dirname + "/dist",
+    path: path.join(__dirname, "/dist"),
     publicPath: "/dist/",
     filename: "bundle.js",
   },
@@ -33,9 +36,14 @@ module.exports = {
         use: ["svg-url-loader"],
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: ["file-loader"],
+        include: path.join(__dirname, "src/images"),
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        // use: ["file-loader", "extract-loader", "html-loader"],
+        type: "asset/resource",
       },
     ],
   },
+  plugins: [
+    new webpack.DefinePlugin({ PACKAGES_DIR: JSON.stringify("src/images") }),
+  ],
 };

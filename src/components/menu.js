@@ -1,6 +1,9 @@
 import React from "react";
-import { Tabs, Tab, Navbar, Container, Nav } from "react-bootstrap";
+import { Tabs, Tab, Navbar, Container, Nav, Accordion } from "react-bootstrap";
 import { HashLink as Link } from "react-router-hash-link";
+import MenuItem from "./menuItem";
+import MealInformation from "./mealInformation";
+import CustomAccordion from "./customAccordion";
 import menuData from "../data/menu";
 import "./menu.css";
 
@@ -70,13 +73,22 @@ export function Menu(props) {
             </h3>
             {menuData[currentMenu][key].map((meal, mealIndex) => {
               return (
-                <div className="meal-container" key={`meal-key-${mealIndex}`}>
-                  <div className="meal-row">
-                    <div className="meal-name">{meal.name}</div>
-                    <div className="meal-price">{meal.price}</div>
-                  </div>
-                  <div className="meal-description">{meal.description}</div>
-                </div>
+                <Accordion defaultActiveKey="-1" style={{ width: "100%" }}>
+                  <CustomAccordion eventKey={mealIndex}>
+                    <MenuItem
+                      menukey={`menu-item-${mealIndex}`}
+                      name={meal.name}
+                      price={meal.price}
+                      description={meal.description}
+                    />
+                  </CustomAccordion>
+                  <Accordion.Collapse eventKey={mealIndex}>
+                    <MealInformation
+                      ingredients={meal.ingredients}
+                      picture={meal.picture}
+                    />
+                  </Accordion.Collapse>
+                </Accordion>
               );
             })}
           </>

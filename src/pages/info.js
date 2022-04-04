@@ -16,7 +16,7 @@ export default function Info() {
       <hr />
       
         <h1>Dine Down on the Bayou</h1>
-        <div class="dine-down-info-page">
+        <div className="dine-down-info-page">
           <p>Step into perpertual twilight as the nighttime ambiance of the watery setting
             <br />surrounds you. Spot Guests embarking on a Pirates of the Caribbean adventure,
             <br /> as you enjoy an authentic New Orleans-inspired lunch or dinner. It's a truly
@@ -25,7 +25,7 @@ export default function Info() {
         </div>
 
         <h1>A New Orleans Square Classic</h1>
-        <div class="new-orleans-info-page">
+        <div className="new-orleans-info-page">
           <p>Blue Bayou has been a must-visit destination for many Disneyland Resort Guests
             <br />since its opening in 1967. Its mystical setting takes you into the heart of the
             <br /> South—overhead strings of colorful balloon lanterns cast an enchanting glow,
@@ -35,7 +35,7 @@ export default function Info() {
         </div>
 
         <h1>Big Tastes from the Big Easy</h1>
-        <div class="big-tastes-info-page">
+        <div className="big-tastes-info-page">
           <p> Kick off your memorable meal with Southern-inspired starters. Next, choose
             <br /> from a selection of authentic entrées—including signature dishes such as
             <br /> Jambalaya and Plant-based Cajun Cauliflower.
@@ -59,7 +59,7 @@ export default function Info() {
       <hr />
 
       <Container>
-        <div class="bottom-left-info-page">
+        <div className="bottom-left-info-page">
           <div>
             <h6>Reservations</h6>
             <p>Advance reservations are highly recommended and can be made
@@ -93,7 +93,7 @@ export default function Info() {
       </Container>
 
       <Container>
-        <div class="bottom-right-info-page">
+        <div className="bottom-right-info-page">
           <div>
             <h6>Join a Mobile Dine Walk-Up List</h6>
             <p> Don’t have a dining reservation? You now have the opportunity to

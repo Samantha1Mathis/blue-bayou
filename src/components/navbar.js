@@ -14,8 +14,14 @@ export function NavbarCustom(props) {
       variant="dark"
     >
       <Container>
-        <img src={pirate} style={{ width: "5%", margin: "5px" }} />
         <Navbar.Brand style={{ fontSize: "25px" }} href="/">
+          <img
+            src={pirate}
+            width="75"
+            height="50"
+            className="d-inline-block align-top"
+            alt="React Bootstrap logo"
+          />{" "}
           Blue Bayou
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

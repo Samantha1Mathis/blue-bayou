@@ -12,7 +12,15 @@ code {
     monospace;
 }
 
-.home-img {
+div {
+  position: relative !important;
+}
+
+.reservations{
+  text-align: center;
+
+}
+.home-img{
   display: block;
   margin-left: auto;
   margin-right: auto;

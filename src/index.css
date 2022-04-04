@@ -27,35 +27,36 @@ div {
   width: 50%;
 }
 
-.home-img2{
-  float:right;
+.home-img2 {
+  float: right;
 }
 
-.carousel{
+.carousel {
   background-color: grey;
 }
 
-.topnav a {
+.bottom-left-info-page {
   float: left;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 10px 12px;
-  text-decoration: none;
-  font-size: 20px;
-  margin: 3px;
-  border-bottom: 3px solid transparent;
 }
 
-.topnav a:hover {
-  border-bottom: 3px solid red;
+.bottom-right-info-page {
+  float: right;
 }
 
-.topnav a.active {
-  border-bottom: 3px solid red;
+.dine-down-info-page {
+  background-image: url("images/info-images/blue-bayou-restaurant-00.jpeg");
+  background-color: gray;
+  color:white;
 }
 
+.new-orleans-info-page {
+  background-image: url("images/info-images/new_orleans.jpeg");
+  background-color: gray;
+  color:white;
+}
 
-.panel-title {display: inline;font-weight: bold;}
-.checkbox.pull-right { margin: 0; }
-.pl-ziro { padding-left: 0px; }
+.big-tastes-info-page {
+  background-image: url("images/info-images/dining_view.jpeg");
+  background-color: gray;
+  color:white;
+}

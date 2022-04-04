@@ -1,7 +1,12 @@
 import React from "react";
 import { Tabs, Tab, Navbar, Container, Nav } from "react-bootstrap";
 import { HashLink as Link } from "react-router-hash-link";
+<<<<<<< HEAD
+import icon from "../images/info-images/icon.jpeg";
+
+=======
 import pirate from "../images/home-images/png-transparent-piracy-jolly-roger-pirate-hat-logo-jolly-roger-skull-and-crossbones-thumbnail.png";
+>>>>>>> main
 export function NavbarCustom(props) {
   return (
     <Navbar
@@ -14,6 +19,13 @@ export function NavbarCustom(props) {
       <Container>
         <img src={pirate} style={{ width: "5%", margin: "5px" }} />
         <Navbar.Brand style={{ fontSize: "25px" }} href="/">
+          <img
+            src={icon}
+            width="75"
+            height="50"
+            className="d-inline-block align-top"
+            alt="React Bootstrap logo"
+          /> {' '}
           Blue Bayou
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

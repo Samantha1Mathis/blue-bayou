@@ -3,6 +3,7 @@ import TimePicker from "react-time-picker";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { NavbarCustom } from "../components/navbar";
+import Button from "react-bootstrap/Button";
 export default function Reservations() {
   const [date, setDate] = useState(new Date());
   const d = new Date();
@@ -13,13 +14,13 @@ export default function Reservations() {
 
     return currentDate.getTime() < selectedDate.getTime();
   };
+  const routeChange = () => (window.location.href = "/#/complete");
   return (
     <>
       <NavbarCustom />
-      <div className="text-center reservation" style={{ position: "relative" }}>
+      <div className="text-center" style={{ position: "relative" }}>
         <h1>Reservations</h1>
         <DatePicker
-          className="reservation"
           style={{ position: "relative", margin: "40px" }}
           showTimeSelect
           dateFormat="MMMM d, yyyy h:mmaa"
@@ -39,6 +40,13 @@ export default function Reservations() {
           onChange={(date) => setDate(date)}
         />{" "}
       </div>
+      <Button
+        style={{ marginLeft: "650px" }}
+        onClick={routeChange}
+        variant="outline-primary"
+      >
+        Reserve!
+      </Button>{" "}
     </>
   );
 }

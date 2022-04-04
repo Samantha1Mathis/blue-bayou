@@ -16,6 +16,10 @@ div {
   position: relative !important;
 }
 
+.reservations{
+  text-align: center;
+
+}
 .home-img{
   display: block;
   margin-left: auto;

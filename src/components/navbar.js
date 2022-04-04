@@ -2,10 +2,14 @@ import React from "react";
 import { Tabs, Tab, Navbar, Container, Nav } from "react-bootstrap";
 import { HashLink as Link } from "react-router-hash-link";
 <<<<<<< HEAD
+import pirate from "../images/home-images/png-transparent-piracy-jolly-roger-pirate-hat-logo-jolly-roger-skull-and-crossbones-thumbnail.png";
+=======
+<<<<<<< HEAD
 import icon from "../images/info-images/icon.jpeg";
 
 =======
 import pirate from "../images/home-images/png-transparent-piracy-jolly-roger-pirate-hat-logo-jolly-roger-skull-and-crossbones-thumbnail.png";
+>>>>>>> main
 >>>>>>> main
 export function NavbarCustom(props) {
   return (
@@ -17,10 +21,9 @@ export function NavbarCustom(props) {
       variant="dark"
     >
       <Container>
-        <img src={pirate} style={{ width: "5%", margin: "5px" }} />
         <Navbar.Brand style={{ fontSize: "25px" }} href="/">
           <img
-            src={icon}
+            src={pirate}
             width="75"
             height="50"
             className="d-inline-block align-top"

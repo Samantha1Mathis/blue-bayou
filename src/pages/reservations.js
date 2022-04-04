@@ -16,10 +16,11 @@ export default function Reservations() {
   return (
     <>
       <NavbarCustom />
-      <div className="text-center" style={{ position: "relative" }}>
+      <div className="text-center reservation" style={{ position: "relative" }}>
         <h1>Reservations</h1>
         <DatePicker
-          style={{ position: "relative" }}
+          className="reservation"
+          style={{ position: "relative", margin: "40px" }}
           showTimeSelect
           dateFormat="MMMM d, yyyy h:mmaa"
           excludeDates={[

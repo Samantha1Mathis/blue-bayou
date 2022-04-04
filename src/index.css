@@ -12,6 +12,9 @@ code {
     monospace;
 }
 
+div {
+  position: relative !important;
+}
 
 .home-img{
   display: block;

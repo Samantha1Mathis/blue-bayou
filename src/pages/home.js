@@ -78,7 +78,7 @@ export default function Home() {
         <p>Lunch: 11am - 3:55pm</p>
         <p>Dinner: 4pm - 10pm</p>
       </div>
-      <div className="text-center home-img" style={{ width: "50%" }}>
+      <div className="home-img" style={{ width: "50%" }}>
         <Menu />
         <br></br>
         <br></br>

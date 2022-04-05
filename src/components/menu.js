@@ -74,7 +74,14 @@ export function Menu(props) {
             {menuData[currentMenu][key].map((meal, mealIndex) => {
               return (
                 <div className="menu-accordion-container">
-                  <div className="add-to-order">+</div>
+                  <div
+                    onClick={() => {
+                      props.onAddButtonClicked(meal);
+                    }}
+                    className="add-to-order"
+                  >
+                    +
+                  </div>
                   <Accordion defaultActiveKey="-1" style={{ width: "100%" }}>
                     <CustomAccordion eventKey={mealIndex}>
                       <MenuItem

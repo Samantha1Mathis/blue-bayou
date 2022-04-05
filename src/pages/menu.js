@@ -43,6 +43,13 @@ export default function MenuPage() {
                   </div>
                 );
               })}
+              <div className="cart-total">
+                Total: $
+                {order.reduce(
+                  (sum, a) => sum + parseFloat(a.price.substr(1)),
+                  0
+                )}
+              </div>
             </Popover>
           }
         >

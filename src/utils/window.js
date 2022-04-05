@@ -9,5 +9,5 @@ export const extractQueryParam = (key) => {
     }
   }
 
-  return undefined;
+  return "";
 };

@@ -56,6 +56,7 @@
 .meal-row {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .meal-name {
@@ -71,4 +72,28 @@
 
 .meal-description {
     color: rgb(89, 89, 89);
+}
+
+.menu-accordion-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+.add-to-order {
+    background: rgba(95, 158, 160, 0.4);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-to-order:hover {
+    background: rgba(95, 158, 160, 0.6);
+    cursor: pointer;
 }

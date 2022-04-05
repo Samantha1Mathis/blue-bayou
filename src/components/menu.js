@@ -5,6 +5,7 @@ import MenuItem from "./menuItem";
 import MealInformation from "./mealInformation";
 import CustomAccordion from "./customAccordion";
 import menuData from "../data/menu";
+import { extractQueryParam } from "../utils/window";
 import "../styles/components/menu.css";
 
 export function Menu(props) {
@@ -26,6 +27,9 @@ export function Menu(props) {
     let defaultMenu = props.defaultMenu || "Lunch";
     setCurrentMenu(defaultMenu);
     changeActiveKeys(defaultMenu);
+
+    let menuType = extractQueryParam("type");
+    console.log(menuType);
   }, [props]);
 
   return (

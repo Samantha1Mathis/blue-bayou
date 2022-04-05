@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, OverlayTrigger, Popover } from "react-bootstrap";
 import { Menu } from "../components/menu";
 import { NavbarCustom } from "../components/navbar";
 import shoppingCart from "../images/menu-images/shopping_cart.png";
@@ -26,14 +26,35 @@ export default function MenuPage() {
     <>
       <NavbarCustom />
       {type && (
-        <div className="menu-cart">
-          <img
-            className="shopping-cart-image"
-            src={shoppingCart}
-            alt="Shopping Cart"
-          />
-          <div className="cart-quantity">{numItems}</div>
-        </div>
+        <OverlayTrigger
+          trigger={["hover", "focus"]}
+          key="bottom"
+          placement="bottom"
+          overlay={
+            <Popover>
+              {order.map((item, index) => {
+                return (
+                  <div
+                    className="cart-item-container"
+                    key={`order-item-${index}`}
+                  >
+                    <div className="cart-item-name">{item.name}</div>
+                    <div className="cart-item-price">{item.price}</div>
+                  </div>
+                );
+              })}
+            </Popover>
+          }
+        >
+          <div className="menu-cart">
+            <img
+              className="shopping-cart-image"
+              src={shoppingCart}
+              alt="Shopping Cart"
+            />
+            <div className="cart-quantity">{numItems}</div>
+          </div>
+        </OverlayTrigger>
       )}
       <div className="menu-page-container">
         <Card style={{ width: "60%", padding: "10px" }}>

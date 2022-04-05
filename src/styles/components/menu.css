@@ -78,15 +78,16 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    /* align-items: center; */
     cursor: pointer;
 }
 
 .add-to-order {
     background: rgba(95, 158, 160, 0.4);
     border-radius: 50%;
-    width: 30px;
+    min-width: 30px;
     height: 30px;
+    margin-top: 5px;
     margin-right: 5px;
     display: flex;
     justify-content: center;

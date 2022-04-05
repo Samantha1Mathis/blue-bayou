@@ -28,8 +28,8 @@ export default function Payment() {
   return (
     <>
       <NavbarCustom />
-      <div className="card mt-50 mb-50">
-        <div className="card-title mx-auto"> Payment </div>
+      <div className="payment-card mt-50 mb-50">
+        <div className="payment-scard-title mx-auto"> Payment </div>
         <p id="error"></p>
         <form>
           {" "}

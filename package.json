@@ -10,6 +10,7 @@
     "css-loader": "^6.7.1",
     "moment": "^2.29.1",
     "prettier": "^2.6.1",
+    "query-string": "^7.1.1",
     "react": "^17.0.0",
     "react-bootstrap": "^2.2.2",
     "react-credit-cards": "^0.8.3",

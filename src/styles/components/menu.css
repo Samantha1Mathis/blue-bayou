@@ -13,6 +13,16 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     position: fixed;
+
+    background-image: linear-gradient(to right, white, white),
+        linear-gradient(to right, white, white),
+        linear-gradient(to right, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0)),
+        linear-gradient(to left, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0));
+    background-position: left center, right center, left center, right center;
+    background-repeat: no-repeat;
+    background-color: white;
+    background-size: 20px 100%, 20px 100%, 20px 100%, 20px 100%;
+    background-attachment: local, local, scroll, scroll;
 }
 
 .menu-item-container::-webkit-scrollbar {
@@ -40,12 +50,13 @@
 }
 
 .meal-container:hover {
-    background-color: rgba(95, 158, 160, 0.4);
+    background-color: rgba(95, 158, 160, 0.1);
 }
 
 .meal-row {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .meal-name {
@@ -61,4 +72,29 @@
 
 .meal-description {
     color: rgb(89, 89, 89);
+}
+
+.menu-accordion-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    cursor: pointer;
+}
+
+.add-to-order {
+    background: rgba(95, 158, 160, 0.4);
+    border-radius: 50%;
+    min-width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-to-order:hover {
+    background: rgba(95, 158, 160, 0.6);
+    cursor: pointer;
 }

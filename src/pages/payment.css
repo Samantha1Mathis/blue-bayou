@@ -1,5 +1,5 @@
 
-.card {
+.payment-card {
     margin: auto;
     width: 600px;
     padding: 3rem 3.5rem;
@@ -15,14 +15,14 @@
 }
 
 @media(max-width:767px) {
-    .card {
+    .payment-card {
         width: 90%;
         padding: 1.5rem
     }
 }
 
 @media(height:1366px) {
-    .card {
+    .payment-card {
         width: 90%;
         padding: 8vh
     }

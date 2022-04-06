@@ -73,22 +73,32 @@ export function Menu(props) {
             </h3>
             {menuData[currentMenu][key].map((meal, mealIndex) => {
               return (
-                <Accordion defaultActiveKey="-1" style={{ width: "100%" }}>
-                  <CustomAccordion eventKey={mealIndex}>
-                    <MenuItem
-                      menukey={`menu-item-${mealIndex}`}
-                      name={meal.name}
-                      price={meal.price}
-                      description={meal.description}
-                    />
-                  </CustomAccordion>
-                  <Accordion.Collapse eventKey={mealIndex}>
-                    <MealInformation
-                      ingredients={meal.ingredients}
-                      picture={meal.picture}
-                    />
-                  </Accordion.Collapse>
-                </Accordion>
+                <div className="menu-accordion-container">
+                  <div
+                    onClick={() => {
+                      props.onAddButtonClicked(meal);
+                    }}
+                    className="add-to-order"
+                  >
+                    +
+                  </div>
+                  <Accordion defaultActiveKey="-1" style={{ width: "100%" }}>
+                    <CustomAccordion eventKey={mealIndex}>
+                      <MenuItem
+                        menukey={`menu-item-${mealIndex}`}
+                        name={meal.name}
+                        price={meal.price}
+                        description={meal.description}
+                      />
+                    </CustomAccordion>
+                    <Accordion.Collapse eventKey={mealIndex}>
+                      <MealInformation
+                        ingredients={meal.ingredients}
+                        picture={meal.picture}
+                      />
+                    </Accordion.Collapse>
+                  </Accordion>
+                </div>
               );
             })}
           </>

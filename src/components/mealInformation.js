@@ -19,18 +19,17 @@ function MealInformation(props) {
     let imageData = images(`./${picture}`);
     // setImageName(imageData);
     setImageName(imageData);
-    console.log(picture);
   }, [images, picture]);
 
   return (
     <Card>
-      <Card.Body>
-        {ingredients && <div>Ingredients: {ingredients}</div>}
-        {/* {imageName && <img src={imageName} alt="What you're ordering" />} */}
+      <Card.Body className="meal-information-container">
+        {ingredients && (
+          <div className="meal-information-ingredients">
+            Ingredients: {ingredients}
+          </div>
+        )}
         {imageName && (
-          // <div
-          //   style={{ backgroundImage: `url(${imageName})`, height: "100px" }}
-          // ></div>
           <img
             className="meal-information-image"
             src={imageName}

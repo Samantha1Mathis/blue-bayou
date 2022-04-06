@@ -58,7 +58,7 @@
     font-weight: bold
 }
 
-input {
+.payment-input {
     border: none;
     outline: none;
     font-size: 1rem;

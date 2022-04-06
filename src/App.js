@@ -10,6 +10,7 @@ import Payment from "./pages/payment";
 import Contact from "./pages/contact";
 import Togo from "./pages/togo";
 import Reservations from "./pages/reservations";
+import Checkout from "./pages/checkout";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="togo" element={<Togo />} />
           <Route path="reservations" element={<Reservations />} />
           <Route path="menu" element={<Menu />} />
+          <Route path="checkout" element={<Checkout />} />
           <Route path="payment" element={<Payment />} />
           <Route path="complete" element={<Complete />} />
         </Route>

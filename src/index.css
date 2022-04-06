@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+div {
+  position: relative !important;
+}
+
 .bottom-left-info-page {
   float: left;
 }

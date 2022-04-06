@@ -10,7 +10,7 @@
 }
 
 .menu-cart {
-    position: sticky;
+    position: sticky !important;
     max-width: 50px;
     top: 12%;
     left: 90%;
@@ -20,13 +20,17 @@
     z-index: 10;
 }
 
+.menu-cart:hover {
+    background-color: rgba(95, 158, 160, 0.6);
+}
+
 .shopping-cart-image {
     max-height: 30px;
     max-width: 30px;
 }
 
 .cart-quantity {
-    position: absolute;
+    position: absolute !important;
     top: -5%;
     right: 1%;
     background: red;
@@ -57,4 +61,8 @@
     width: 40%;
     text-align: right;
     font-weight: bold;
+}
+
+.checkout-overlay {
+    position: absolute !important;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, OverlayTrigger, Popover } from "react-bootstrap";
 import { Menu } from "../components/menu";
 import { NavbarCustom } from "../components/navbar";
@@ -7,6 +8,8 @@ import { extractQueryParam } from "../utils/window";
 import "../styles/pages/menu.css";
 
 export default function MenuPage() {
+  const navigate = useNavigate();
+
   let [type, setType] = React.useState("");
   let [order, setOrder] = React.useState([]);
   let [numItems, setNumItems] = React.useState(0);
@@ -22,6 +25,24 @@ export default function MenuPage() {
     setNumItems(order.length);
   };
 
+  const onCartButtonClicked = () => {
+    if (order.length === 0) {
+      return;
+    }
+
+    let orderCopy = [...order];
+    for (let item of orderCopy) {
+      delete item.description;
+      delete item.ingredients;
+    }
+
+    if (type === "togo") {
+      navigate(`/checkout?type=togo&order=${JSON.stringify(orderCopy)}`);
+    } else if (type === "inperson") {
+      navigate(`/checkout?type=inperson&order=${JSON.stringify(orderCopy)}`);
+    }
+  };
+
   return (
     <>
       <NavbarCustom />
@@ -31,7 +52,7 @@ export default function MenuPage() {
           key="bottom"
           placement="bottom"
           overlay={
-            <Popover>
+            <Popover className="checkout-overlay">
               {order.map((item, index) => {
                 return (
                   <div
@@ -53,7 +74,7 @@ export default function MenuPage() {
             </Popover>
           }
         >
-          <div className="menu-cart">
+          <div className="menu-cart" onClick={onCartButtonClicked}>
             <img
               className="shopping-cart-image"
               src={shoppingCart}

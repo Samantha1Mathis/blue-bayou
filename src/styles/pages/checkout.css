@@ -1,5 +1,5 @@
 .horizontal-break {
-    width: 55%;
+    width: 100%;
     border-top: 1px solid lightgray;
     /* height: 1px; */
     margin-top: 5px;
@@ -15,6 +15,10 @@
     align-items: center;
 }
 
+.checkout-accordion {
+    width: 65%;
+}
+
 .checkout-order-header {
     width: 50%;
     margin: 20px 0;
@@ -23,7 +27,7 @@
 .order-item-container {
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 100%;
 }
 
 .order-item-name {

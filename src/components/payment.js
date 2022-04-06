@@ -1,7 +1,9 @@
 import "../styles/components/payment.css";
 import Button from "react-bootstrap/Button";
 
-export default function Payment() {
+export default function Payment(props) {
+  let { onPayButtonClicked } = props;
+
   const cardRegex = /^[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}/;
   const expRegex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
   const cvvRegex = /^[0-9]{3}/;
@@ -19,8 +21,11 @@ export default function Payment() {
       cvvRegex.test(cvvNum) &&
       nameRegex.test(name)
     ) {
-      const routeChange = () => (window.location.href = "/#/complete");
-      routeChange();
+      if (onPayButtonClicked) {
+        onPayButtonClicked();
+      }
+      // const routeChange = () => (window.location.href = "/#/complete");
+      // routeChange();
     } else {
       document.getElementById("error").innerText = "ERROR with input";
     }

@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { NavbarCustom } from "../components/navbar";
-import "./payment.css";
+import "../styles/components/payment.css";
 import Button from "react-bootstrap/Button";
+
 export default function Payment() {
   const cardRegex = /^[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}/;
   const expRegex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
   const cvvRegex = /^[0-9]{3}/;
   const nameRegex = /^[a-zA-Z]{2,}\s[a-zA-Z]{1,}/;
   var isValid = false;
+
   const validate = () => {
     var ccNum = document.getElementById("cardNum").value;
     var expNum = document.getElementById("expNum").value;
@@ -25,10 +25,10 @@ export default function Payment() {
       document.getElementById("error").innerText = "ERROR with input";
     }
   };
+
   return (
     <>
-      <NavbarCustom />
-      <div className="payment-card mt-50 mb-50">
+      <div className="payment-card mb-50">
         <div className="payment-scard-title mx-auto"> Payment </div>
         <p id="error"></p>
         <form>
@@ -37,12 +37,14 @@ export default function Payment() {
             <div className="col-2">
               <img
                 className="img-fluid"
+                alt="credit card logo"
                 src="https://img.icons8.com/color/48/000000/mastercard-logo.png"
               />
             </div>
             <div className="col-7">
               {" "}
               <input
+                className="payment-input"
                 type="text"
                 id="cardNum"
                 placeholder="**** **** **** 3193"
@@ -56,17 +58,32 @@ export default function Payment() {
             </div>
             <div className="row row-2">
               {" "}
-              <input type="text" id="name" placeholder="Bojan Viner" />{" "}
+              <input
+                className="payment-input"
+                type="text"
+                id="name"
+                placeholder="Bojan Viner"
+              />{" "}
             </div>
           </div>
           <div className="row three">
             <div className="col-2">
               {" "}
-              <input type="text" id="expNum" placeholder="Exp. date" />{" "}
+              <input
+                className="payment-input"
+                type="text"
+                id="expNum"
+                placeholder="Exp. date"
+              />{" "}
             </div>
             <div className="col-2">
               {" "}
-              <input type="text" id="cvvNum" placeholder="CVV" />{" "}
+              <input
+                className="payment-input"
+                type="text"
+                id="cvvNum"
+                placeholder="CVV"
+              />{" "}
             </div>
           </div>{" "}
           <Button onClick={validate} variant="outline-primary">

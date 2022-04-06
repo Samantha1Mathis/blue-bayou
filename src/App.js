@@ -6,7 +6,6 @@ import Home from "./pages/home";
 import Info from "./pages/info";
 import Menu from "./pages/menu";
 import Complete from "./pages/complete";
-import Payment from "./pages/payment";
 import Contact from "./pages/contact";
 import Togo from "./pages/togo";
 import Reservations from "./pages/reservations";
@@ -24,7 +23,6 @@ function App() {
           <Route path="reservations" element={<Reservations />} />
           <Route path="menu" element={<Menu />} />
           <Route path="checkout" element={<Checkout />} />
-          <Route path="payment" element={<Payment />} />
           <Route path="complete" element={<Complete />} />
         </Route>
       </Routes>

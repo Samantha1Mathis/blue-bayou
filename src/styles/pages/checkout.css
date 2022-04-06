@@ -1,0 +1,38 @@
+.horizontal-break {
+    width: 55%;
+    border-top: 1px solid lightgray;
+    /* height: 1px; */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.checkout-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkout-order-header {
+    width: 50%;
+    margin: 20px 0;
+}
+
+.order-item-container {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+
+.order-item-name {
+    width: 75%;
+    text-align: left;
+}
+
+.order-item-price {
+    width: 25%;
+    text-align: right;
+    font-weight: bold;
+}

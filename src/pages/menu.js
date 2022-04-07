@@ -86,7 +86,7 @@ export default function MenuPage() {
       )}
       <div className="menu-page-container">
         <Card style={{ width: "60%", padding: "10px" }}>
-          <Menu onAddButtonClicked={onAddButtonClicked} />
+          <Menu type={type} onAddButtonClicked={onAddButtonClicked} />
         </Card>
       </div>
     </>

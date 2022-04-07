@@ -8,6 +8,7 @@ import menuData from "../data/menu";
 import "../styles/components/menu.css";
 
 export function Menu(props) {
+  let { type, defaultMenu } = props;
   let lunchKeys = Object.keys(menuData.Lunch);
   let dinnerKeys = Object.keys(menuData.Dinner);
 
@@ -23,10 +24,10 @@ export function Menu(props) {
   );
 
   React.useEffect(() => {
-    let defaultMenu = props.defaultMenu || "Lunch";
-    setCurrentMenu(defaultMenu);
-    changeActiveKeys(defaultMenu);
-  }, [props]);
+    let startMenu = defaultMenu || "Lunch";
+    setCurrentMenu(startMenu);
+    changeActiveKeys(startMenu);
+  }, [defaultMenu]);
 
   return (
     <div className="menu-container">
@@ -74,14 +75,16 @@ export function Menu(props) {
             {menuData[currentMenu][key].map((meal, mealIndex) => {
               return (
                 <div className="menu-accordion-container">
-                  <div
-                    onClick={() => {
-                      props.onAddButtonClicked(meal);
-                    }}
-                    className="add-to-order"
-                  >
-                    +
-                  </div>
+                  {type && (
+                    <div
+                      onClick={() => {
+                        props.onAddButtonClicked(meal);
+                      }}
+                      className="add-to-order"
+                    >
+                      +
+                    </div>
+                  )}
                   <Accordion defaultActiveKey="-1" style={{ width: "100%" }}>
                     <CustomAccordion eventKey={mealIndex}>
                       <MenuItem

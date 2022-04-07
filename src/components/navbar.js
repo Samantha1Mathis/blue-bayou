@@ -28,7 +28,7 @@ export function NavbarCustom(props) {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto"></Nav>
           <Nav className="topnav">
-            <Nav.Link href="#/togo">To go</Nav.Link>
+            <Nav.Link href="#/menu?type=togo">To go</Nav.Link>
             <Nav.Link href="#/reservations">Reservations</Nav.Link>
             <Nav.Link href="#/info">Info</Nav.Link>
             <Nav.Link href="#/contact">Contact</Nav.Link>

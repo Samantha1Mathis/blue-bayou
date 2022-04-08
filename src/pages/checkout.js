@@ -112,6 +112,24 @@ function Checkout() {
               <h3 className="checkout-order-header">Confirm Order</h3>
             </Accordion.Header>
             <Accordion.Body>
+              <div className="order-summary">
+                {order.map((item, index) => {
+                  return (
+                    <div
+                      className="order-item-container"
+                      key={`order-item-${index}`}
+                    >
+                      <div className="order-item-name">{item.name}</div>
+                      <div className="order-item-price">{item.price}</div>
+                    </div>
+                  );
+                })}
+                <div className="horizontal-break"></div>
+                <div>
+                  <span>Pickup Time: </span>
+                  <DatePicker selected={startTime} disabled />
+                </div>
+              </div>
               <Button
                 variant="outline-primary"
                 onClick={onConfirmButtonClicked}

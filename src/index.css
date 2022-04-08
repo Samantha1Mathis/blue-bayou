@@ -53,3 +53,10 @@ div {
 .contact-page-form-group {
   margin: 15px;
 }
+
+@font-face {
+  font-family: 'blackPearl';
+  src: local('blackPearl'), url(./styles/fonts/Blackpearl-vPxA.ttf) format('tff');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}

@@ -78,7 +78,10 @@ export default function Home() {
       </Carousel>
       <NavbarCustom />
       <div className=" home-page">
-        <div className="text-center text-dark hours">
+        <div
+          className="text-center text-dark hours"
+          style={{ fontFamily: "blackPearl" }}
+        >
           <h2>Hours</h2>
           <p style={{ fontSize: "25px" }}>Lunch: 11am - 3:55pm</p>
           <p style={{ fontSize: "25px" }}>Dinner: 4pm - 10pm</p>

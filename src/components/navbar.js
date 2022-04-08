@@ -7,6 +7,7 @@ import "../styles/components/navbar.css";
 export function NavbarCustom(props) {
   return (
     <Navbar
+      style={{ fontFamily: "blackPearl" }}
       collapseOnSelect
       sticky="top"
       expand="lg"
@@ -14,7 +15,7 @@ export function NavbarCustom(props) {
       variant="dark"
     >
       <Container>
-        <Navbar.Brand style={{ fontSize: "25px" }} href="/">
+        <Navbar.Brand style={{ fontSize: "35px" }} href="/">
           <img
             src={pirate}
             width="75"
@@ -27,7 +28,7 @@ export function NavbarCustom(props) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto"></Nav>
-          <Nav className="topnav">
+          <Nav className="topnav" style={{ fontSize: "35px" }}>
             <Nav.Link href="#/menu?type=togo">To go</Nav.Link>
             <Nav.Link href="#/reservations">Reservations</Nav.Link>
             <Nav.Link href="#/info">Info</Nav.Link>

@@ -11,6 +11,7 @@ import {
   deleteFromLocalStorage,
   readFromLocalStorage,
 } from "../utils/localStorage";
+import OrderSummary from "../components/orderSummary";
 
 function Checkout() {
   const navigate = useNavigate();
@@ -58,22 +59,7 @@ function Checkout() {
               <h3 className="checkout-order-header">Order Details</h3>
             </Accordion.Header>
             <Accordion.Body>
-              {order.map((item, index) => {
-                return (
-                  <div
-                    className="order-item-container"
-                    key={`order-item-${index}`}
-                  >
-                    <div className="order-item-name">{item.name}</div>
-                    <div className="order-item-price">{item.price}</div>
-                  </div>
-                );
-              })}
-              <div className="horizontal-break" />
-              <div className="order-item-container">
-                <div className="order-item-name">Total: </div>
-                <div className="order-item-price">${total}</div>
-              </div>
+              <OrderSummary order={order} showTax={true} />
               <Button
                 variant="outline-primary"
                 onClick={onCheckoutButtonClicked}
@@ -118,17 +104,7 @@ function Checkout() {
             </Accordion.Header>
             <Accordion.Body>
               <div className="order-summary">
-                {order.map((item, index) => {
-                  return (
-                    <div
-                      className="order-item-container"
-                      key={`order-item-${index}`}
-                    >
-                      <div className="order-item-name">{item.name}</div>
-                      <div className="order-item-price">{item.price}</div>
-                    </div>
-                  );
-                })}
+                <OrderSummary order={order} showTax={true} />
                 <div className="horizontal-break"></div>
                 <div>
                   <span>Pickup Time: </span>

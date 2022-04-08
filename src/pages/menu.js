@@ -10,6 +10,7 @@ import {
   readFromLocalStorage,
   writeToLocalStorage,
 } from "../utils/localStorage";
+import OrderSummary from "../components/orderSummary";
 
 export default function MenuPage() {
   const navigate = useNavigate();
@@ -65,24 +66,7 @@ export default function MenuPage() {
           placement="bottom"
           overlay={
             <Popover className="checkout-overlay">
-              {order.map((item, index) => {
-                return (
-                  <div
-                    className="cart-item-container"
-                    key={`order-item-${index}`}
-                  >
-                    <div className="cart-item-name">{item.name}</div>
-                    <div className="cart-item-price">{item.price}</div>
-                  </div>
-                );
-              })}
-              <div className="cart-total">
-                Total: $
-                {order.reduce(
-                  (sum, a) => sum + parseFloat(a.price.substr(1)),
-                  0
-                )}
-              </div>
+              <OrderSummary order={order} />
             </Popover>
           }
         >

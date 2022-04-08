@@ -1,0 +1,27 @@
+.order-summary-item-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.order-summary-item-container:last-child {
+    border-bottom: none;
+}
+
+.order-summary-item-name {
+    width: 60%;
+    font-weight: 600;
+}
+
+.order-summary-item-price {
+    width: 40%;
+    text-align: right;
+    font-weight: 600;
+}
+
+.horizontal-break {
+    width: 100%;
+    border-top: 1px solid lightgray;
+    /* height: 1px; */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

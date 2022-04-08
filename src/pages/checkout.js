@@ -7,6 +7,10 @@ import Payment from "../components/payment";
 import { extractQueryParam } from "../utils/window";
 import "react-datepicker/dist/react-datepicker.css";
 import "../styles/pages/checkout.css";
+import {
+  deleteFromLocalStorage,
+  readFromLocalStorage,
+} from "../utils/localStorage";
 
 function Checkout() {
   const navigate = useNavigate();
@@ -17,7 +21,7 @@ function Checkout() {
   let [activeKey, setActiveKey] = React.useState("0");
 
   React.useEffect(() => {
-    let userOrder = JSON.parse(extractQueryParam("order"));
+    let userOrder = JSON.parse(readFromLocalStorage("order"));
     setOrder(userOrder);
 
     let currTotal = 0;
@@ -40,6 +44,7 @@ function Checkout() {
   };
 
   const onConfirmButtonClicked = () => {
+    deleteFromLocalStorage("order");
     navigate("/complete");
   };
 

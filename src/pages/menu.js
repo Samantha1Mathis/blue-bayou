@@ -6,6 +6,10 @@ import { NavbarCustom } from "../components/navbar";
 import shoppingCart from "../images/menu-images/shopping_cart.png";
 import { extractQueryParam } from "../utils/window";
 import "../styles/pages/menu.css";
+import {
+  readFromLocalStorage,
+  writeToLocalStorage,
+} from "../utils/localStorage";
 
 export default function MenuPage() {
   const navigate = useNavigate();
@@ -17,11 +21,19 @@ export default function MenuPage() {
   React.useEffect(() => {
     let menuType = extractQueryParam("type");
     setType(menuType);
+    let order = readFromLocalStorage("order");
+    console.log(order);
+    if (order) {
+      order = JSON.parse(order);
+      setOrder(order);
+      setNumItems(order.length);
+    }
   }, []);
 
   const onAddButtonClicked = (meal) => {
     order.push(meal);
     setOrder(order);
+    writeToLocalStorage("order", JSON.stringify(order));
     setNumItems(order.length);
   };
 
@@ -37,9 +49,9 @@ export default function MenuPage() {
     }
 
     if (type === "togo") {
-      navigate(`/checkout?type=togo&order=${JSON.stringify(orderCopy)}`);
+      navigate(`/checkout?type=togo`);
     } else if (type === "inperson") {
-      navigate(`/checkout?type=inperson&order=${JSON.stringify(orderCopy)}`);
+      navigate(`/checkout?type=inperson`);
     }
   };
 

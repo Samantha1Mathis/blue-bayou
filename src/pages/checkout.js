@@ -16,20 +16,31 @@ import OrderSummary from "../components/orderSummary";
 function Checkout() {
   const navigate = useNavigate();
 
-  let [total, setTotal] = React.useState(0);
   let [order, setOrder] = React.useState([]);
-  let [startTime, setStartTime] = React.useState(new Date());
+  let [startTime, setStartTime] = React.useState(null);
   let [activeKey, setActiveKey] = React.useState("0");
+  let [disableTimes, setDisableTimes] = React.useState([]);
+  let [paymentSuccess, setPaymentSuccess] = React.useState(false);
+  let [errorMessage, setErrorMessage] = React.useState("");
 
   React.useEffect(() => {
     let userOrder = JSON.parse(readFromLocalStorage("order"));
     setOrder(userOrder);
 
-    let currTotal = 0;
-    for (let item of userOrder) {
-      currTotal += parseFloat(item.price.substr(1));
+    let times = [];
+    let startDate = new Date();
+    startDate.setHours(11, 0);
+    let endDate = new Date();
+    let currentMinutes = 0;
+    while (startDate <= endDate) {
+      times.push(new Date(startDate));
+      currentMinutes = (currentMinutes + 15) % 60;
+      if (currentMinutes === 0) {
+        startDate.setHours(startDate.getHours() + 1);
+      }
+      startDate.setMinutes(currentMinutes);
     }
-    setTotal(currTotal);
+    setDisableTimes(times);
   }, []);
 
   const onHeaderClicked = (newKey) => {
@@ -37,20 +48,28 @@ function Checkout() {
   };
 
   const onCheckoutButtonClicked = () => {
+    setErrorMessage(false);
     setActiveKey("1");
   };
 
   const onSelectButtonClicked = () => {
+    setErrorMessage(false);
     setActiveKey("2");
   };
 
   const onPayButtonClicked = () => {
     setActiveKey("3");
+    setErrorMessage(false);
+    setPaymentSuccess(true);
   };
 
   const onConfirmButtonClicked = () => {
-    deleteFromLocalStorage("order");
-    navigate("/complete");
+    if (startTime && paymentSuccess) {
+      deleteFromLocalStorage("order");
+      navigate("/complete");
+    } else {
+      setErrorMessage("You need to properly complete your checkout!");
+    }
   };
 
   return (
@@ -83,11 +102,15 @@ function Checkout() {
               <DatePicker
                 selected={startTime}
                 onChange={(time) => setStartTime(time)}
+                minTime={new Date().setHours(11, 0)}
+                maxTime={new Date().setHours(21, 0)}
+                excludeTimes={disableTimes}
                 showTimeSelect
                 showTimeSelectOnly
                 timeIntervals={15}
                 timeCaption="Time"
                 dateFormat="h:mm aa"
+                placeholderText="Pick a time for pickup"
               />
               <Button variant="outline-primary" onClick={onSelectButtonClicked}>
                 Select
@@ -108,6 +131,9 @@ function Checkout() {
             </Accordion.Header>
             <Accordion.Body>
               <div className="order-summary">
+                {errorMessage && (
+                  <div className="error-message">{errorMessage}</div>
+                )}
                 <OrderSummary order={order} showTax={true} />
                 <div className="horizontal-break"></div>
                 <div>

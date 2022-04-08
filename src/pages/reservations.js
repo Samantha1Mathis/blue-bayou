@@ -59,7 +59,6 @@ export default function Reservations() {
               maxTime={d.setHours(21, 0)}
               showTimeSelect
               excludeTimes={disableTime}
-              showTimeSelect
               filterTime={filterPassedTime}
               selected={date}
               onChange={(date) => setDate(date)}

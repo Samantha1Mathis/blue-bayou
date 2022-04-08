@@ -11,41 +11,65 @@ import {
   deleteFromLocalStorage,
   readFromLocalStorage,
 } from "../utils/localStorage";
+import OrderSummary from "../components/orderSummary";
 
 function Checkout() {
   const navigate = useNavigate();
 
-  let [total, setTotal] = React.useState(0);
   let [order, setOrder] = React.useState([]);
-  let [startTime, setStartTime] = React.useState(new Date());
+  let [startTime, setStartTime] = React.useState(null);
   let [activeKey, setActiveKey] = React.useState("0");
+  let [disableTimes, setDisableTimes] = React.useState([]);
+  let [paymentSuccess, setPaymentSuccess] = React.useState(false);
+  let [errorMessage, setErrorMessage] = React.useState("");
 
   React.useEffect(() => {
     let userOrder = JSON.parse(readFromLocalStorage("order"));
     setOrder(userOrder);
 
-    let currTotal = 0;
-    for (let item of userOrder) {
-      currTotal += parseFloat(item.price.substr(1));
+    let times = [];
+    let startDate = new Date();
+    startDate.setHours(11, 0);
+    let endDate = new Date();
+    let currentMinutes = 0;
+    while (startDate <= endDate) {
+      times.push(new Date(startDate));
+      currentMinutes = (currentMinutes + 15) % 60;
+      if (currentMinutes === 0) {
+        startDate.setHours(startDate.getHours() + 1);
+      }
+      startDate.setMinutes(currentMinutes);
     }
-    setTotal(currTotal);
+    setDisableTimes(times);
   }, []);
 
+  const onHeaderClicked = (newKey) => {
+    setActiveKey(newKey);
+  };
+
   const onCheckoutButtonClicked = () => {
+    setErrorMessage(false);
     setActiveKey("1");
   };
 
   const onSelectButtonClicked = () => {
+    setErrorMessage(false);
     setActiveKey("2");
   };
 
   const onPayButtonClicked = () => {
     setActiveKey("3");
+    setErrorMessage(false);
+    setPaymentSuccess(true);
   };
 
   const onConfirmButtonClicked = () => {
-    deleteFromLocalStorage("order");
-    navigate("/complete");
+    if (startTime && paymentSuccess) {
+      deleteFromLocalStorage("order");
+      navigate("/complete");
+    } else {
+      setErrorMessage("You need to properly complete your checkout!");
+    }
   };
 
   return (
@@ -54,26 +78,11 @@ function Checkout() {
       <div className="checkout-container">
         <Accordion className="checkout-accordion" flush activeKey={activeKey}>
           <Accordion.Item eventKey="0">
-            <Accordion.Header>
+            <Accordion.Header onClick={() => onHeaderClicked("0")}>
               <h3 className="checkout-order-header">Order Details</h3>
             </Accordion.Header>
             <Accordion.Body>
-              {order.map((item, index) => {
-                return (
-                  <div
-                    className="order-item-container"
-                    key={`order-item-${index}`}
-                  >
-                    <div className="order-item-name">{item.name}</div>
-                    <div className="order-item-price">{item.price}</div>
-                  </div>
-                );
-              })}
-              <div className="horizontal-break" />
-              <div className="order-item-container">
-                <div className="order-item-name">Total: </div>
-                <div className="order-item-price">${total}</div>
-              </div>
+              <OrderSummary order={order} showTax={true} />
               <Button
                 variant="outline-primary"
                 onClick={onCheckoutButtonClicked}
@@ -83,7 +92,7 @@ function Checkout() {
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">
-            <Accordion.Header>
+            <Accordion.Header onClick={() => onHeaderClicked("1")}>
               <h3 className="checkout-order-header">Pick Up Time</h3>
             </Accordion.Header>
             <Accordion.Body>
@@ -93,11 +102,15 @@ function Checkout() {
               <DatePicker
                 selected={startTime}
                 onChange={(time) => setStartTime(time)}
+                minTime={new Date().setHours(11, 0)}
+                maxTime={new Date().setHours(21, 0)}
+                excludeTimes={disableTimes}
                 showTimeSelect
                 showTimeSelectOnly
                 timeIntervals={15}
                 timeCaption="Time"
                 dateFormat="h:mm aa"
+                placeholderText="Pick a time for pickup"
               />
               <Button variant="outline-primary" onClick={onSelectButtonClicked}>
                 Select
@@ -105,7 +118,7 @@ function Checkout() {
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="2">
-            <Accordion.Header>
+            <Accordion.Header onClick={() => onHeaderClicked("2")}>
               <h3 className="checkout-order-header">Payment Information</h3>
             </Accordion.Header>
             <Accordion.Body>
@@ -113,26 +126,24 @@ function Checkout() {
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="3">
-            <Accordion.Header>
+            <Accordion.Header onClick={() => onHeaderClicked("3")}>
               <h3 className="checkout-order-header">Confirm Order</h3>
             </Accordion.Header>
             <Accordion.Body>
               <div className="order-summary">
-                {order.map((item, index) => {
-                  return (
-                    <div
-                      className="order-item-container"
-                      key={`order-item-${index}`}
-                    >
-                      <div className="order-item-name">{item.name}</div>
-                      <div className="order-item-price">{item.price}</div>
-                    </div>
-                  );
-                })}
+                {errorMessage && (
+                  <div className="error-message">{errorMessage}</div>
+                )}
+                <OrderSummary order={order} showTax={true} />
                 <div className="horizontal-break"></div>
                 <div>
                   <span>Pickup Time: </span>
-                  <DatePicker selected={startTime} disabled />
+                  <DatePicker
+                    selected={startTime}
+                    timeCaption="Time"
+                    dateFormat="h:mm aa"
+                    disabled
+                  />
                 </div>
               </div>
               <Button

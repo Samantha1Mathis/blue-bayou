@@ -43,27 +43,6 @@
     align-items: center;
 }
 
-.cart-item-container {
-    display: flex;
-    flex-direction: row;
-    border-bottom: 1px solid lightgray;
-}
-
-.cart-item-container:last-child {
-    border-bottom: none;
-}
-
-.cart-item-name {
-    width: 60%;
-    font-weight: bold;
-}
-
-.cart-item-price {
-    width: 40%;
-    text-align: right;
-    font-weight: bold;
-}
-
 .checkout-overlay {
     position: absolute !important;
 }

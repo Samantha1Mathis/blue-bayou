@@ -37,6 +37,7 @@ export default function Reservations() {
           <div
             className="hours text-dark"
             style={{
+              fontFamily: "blackPearl",
               textAlign: "center",
               position: "relative",
               marginTop: "15px",

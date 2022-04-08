@@ -43,25 +43,6 @@ function Checkout() {
     navigate("/complete");
   };
 
-  const makeReadableTimefield = (date) => {
-    let dateString = date.toISOString();
-    console.log(dateString);
-    let dateParts = dateString.split("T");
-    let timeParts = dateParts[1].split(":");
-
-    let timeOfDay = "";
-    let hour = 0;
-    if (parseInt(timeParts[0]) / 12 > 0) {
-      timeOfDay = "pm";
-      hour = parseInt(timeParts[0]) % 12;
-    } else {
-      timeOfDay = "am";
-      hour = timeParts[0];
-    }
-
-    return hour + ":" + timeParts[0] + " " + timeOfDay;
-  };
-
   return (
     <>
       <NavbarCustom />

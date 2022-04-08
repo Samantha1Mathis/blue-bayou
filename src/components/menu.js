@@ -30,7 +30,7 @@ export function Menu(props) {
   }, [defaultMenu]);
 
   return (
-    <div className="menu-container">
+    <div className="menu-container text-dark">
       <h1>Menu</h1>
       <Tabs
         onSelect={(eventKey) => changeActiveKeys(eventKey)}

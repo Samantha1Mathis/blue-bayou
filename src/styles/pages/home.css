@@ -12,3 +12,15 @@
 .carousel{
     background-color: grey;
 }
+
+
+.home-page {
+
+    background-image: url("../../images/home-images/IMG_7768.JPG");
+    background-color: gray;
+    color:white;
+  }
+
+.hours{
+    background-color:rgba(255, 255, 255, 0.8);
+}

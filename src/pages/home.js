@@ -5,11 +5,15 @@ import img3 from "../images/home-images/1200x0.jpg";
 import img4 from "../images/home-images/BlueBayouCover-Pugh.jpg";
 import img5 from "../images/home-images/rsz_img_5850-1-2.jpg";
 import img6 from "../images/home-images/39512467_1070729289743370_4924584105451978752_n-1.jpg";
+import img7 from "../images/home-images/piratetriomarc.jpg";
+import img8 from "../images/home-images/yefzfoz9w8821.jpg";
+import img9 from "../images/home-images/Pirates-concept-artwork.jpg";
 import Carousel from "react-bootstrap/Carousel";
 import { NavbarCustom } from "../components/navbar";
 import "../styles/pages/home.css";
 import { Menu } from "../components/menu";
-
+import Sound from "react-sound";
+import banjo from "../images/home-images/banjo.mp3";
 export default function Home() {
   return (
     <>
@@ -73,15 +77,19 @@ export default function Home() {
         </Carousel.Item>
       </Carousel>
       <NavbarCustom />
-      <div className="text-center">
-        <h2>Hours</h2>
-        <p>Lunch: 11am - 3:55pm</p>
-        <p>Dinner: 4pm - 10pm</p>
-      </div>
-      <div className="home-img" style={{ width: "50%" }}>
-        <Menu />
-        <br></br>
-        <br></br>
+      <div className=" home-page">
+        <div className="text-center text-dark hours">
+          <h2>Hours</h2>
+          <p style={{ fontSize: "25px" }}>Lunch: 11am - 3:55pm</p>
+          <p style={{ fontSize: "25px" }}>Dinner: 4pm - 10pm</p>
+        </div>
+        <div>
+          <div className="home-img" style={{ width: "50%" }}>
+            <Menu />
+            <br></br>
+            <br></br>
+          </div>
+        </div>
       </div>
     </>
   );

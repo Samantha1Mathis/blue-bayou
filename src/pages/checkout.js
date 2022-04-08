@@ -32,6 +32,10 @@ function Checkout() {
     setTotal(currTotal);
   }, []);
 
+  const onHeaderClicked = (newKey) => {
+    setActiveKey(newKey);
+  };
+
   const onCheckoutButtonClicked = () => {
     setActiveKey("1");
   };
@@ -55,7 +59,7 @@ function Checkout() {
       <div className="checkout-container">
         <Accordion className="checkout-accordion" flush activeKey={activeKey}>
           <Accordion.Item eventKey="0">
-            <Accordion.Header>
+            <Accordion.Header onClick={() => onHeaderClicked("0")}>
               <h3 className="checkout-order-header">Order Details</h3>
             </Accordion.Header>
             <Accordion.Body>
@@ -69,7 +73,7 @@ function Checkout() {
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">
-            <Accordion.Header>
+            <Accordion.Header onClick={() => onHeaderClicked("1")}>
               <h3 className="checkout-order-header">Pick Up Time</h3>
             </Accordion.Header>
             <Accordion.Body>
@@ -91,7 +95,7 @@ function Checkout() {
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="2">
-            <Accordion.Header>
+            <Accordion.Header onClick={() => onHeaderClicked("2")}>
               <h3 className="checkout-order-header">Payment Information</h3>
             </Accordion.Header>
             <Accordion.Body>
@@ -99,7 +103,7 @@ function Checkout() {
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="3">
-            <Accordion.Header>
+            <Accordion.Header onClick={() => onHeaderClicked("3")}>
               <h3 className="checkout-order-header">Confirm Order</h3>
             </Accordion.Header>
             <Accordion.Body>

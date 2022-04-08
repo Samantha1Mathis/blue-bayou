@@ -112,7 +112,12 @@ function Checkout() {
                 <div className="horizontal-break"></div>
                 <div>
                   <span>Pickup Time: </span>
-                  <DatePicker selected={startTime} disabled />
+                  <DatePicker
+                    selected={startTime}
+                    timeCaption="Time"
+                    dateFormat="h:mm aa"
+                    disabled
+                  />
                 </div>
               </div>
               <Button

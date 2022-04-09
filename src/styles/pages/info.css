@@ -7,7 +7,7 @@
 
 .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
-    /* border: 1px solid rgba(0, 0, 0, 0.8); */
+    border-top: 2px solid;
     padding: 20px;
     font-size: 35px;
     text-align: center;
@@ -21,28 +21,26 @@
 }
 
 .hour-info {
-    height:500px;
-    padding-top: 25px;
-    font-size: 50px;
-    font-family:"black pearl";
+    font-size: 35px;
+    font-family: "black pearl";
 }
 
 .info-header {
-    font-size: 60px;
-    font-family:"black pearl";
+    font-size: 45px;
+    font-family: "black pearl";
     padding-top: 50px;
 }
 
-.info-img{
-    width: 550px;
-    height:500px;;
+.info-img {
+    width: 250px;
+    height: 200;
 }
 
 .meal-info {
-    height:500px;
-    padding-top: 150px;
-    font-size:40px;
-    font-family:"black pearl";
+    height: 500px;
+    padding-top: 50px;
+    font-size: 35px;
+    font-family: "black pearl";
 }
 
 .paragraphs {
@@ -72,9 +70,9 @@
 .info-headers {
     font-weight: bold;
     font-family: "black pearl";
-    color:black;
+    color: black;
 }
 
 .cristo-img {
-    padding-top: 175px;
+    padding-top: 75px;
 }

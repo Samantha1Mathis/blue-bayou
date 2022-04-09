@@ -1,8 +1,63 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: rgb(241, 221, 175);
+    padding: 10px;
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    /* border: 1px solid rgba(0, 0, 0, 0.8); */
+    padding: 20px;
+    font-size: 35px;
+    text-align: center;
+}
+
+.info-name {
+    font-size: 75px;
+    height: 500px;
+    padding-top: 175px;
+    font-family: "black pearl";
+}
+
+.hour-info {
+    height:500px;
+    padding-top: 25px;
+    font-size: 50px;
+    font-family:"black pearl";
+}
+
+.info-header {
+    font-size: 60px;
+    font-family:"black pearl";
+    padding-top: 50px;
+}
+
+.info-img{
+    width: 550px;
+    height:500px;;
+}
+
+.meal-info {
+    height:500px;
+    padding-top: 150px;
+    font-size:40px;
+    font-family:"black pearl";
+}
+
+.paragraphs {
+    font-family: "black pearl";
+    text-align: justify;
+    font-size: 30px;
+}
+
 .bottom-left-info-page {
     float: left;
     font-family: "black pearl";
     font-size: 18px;
     width: 45%;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 25px;
 }
 
 .bottom-right-info-page {
@@ -10,86 +65,16 @@
     font-family: "black pearl";
     font-size: 18px;
     width: 50%;
-}
-
-.dine-paragraph {
-    color: black;
-    background-color: white;
-    opacity: 0.75;
-    height: 300px;
-    font-family: "blackPearl";
-    /* text-align: center;  */
-}
-
-.dine-down-info-page {
-    background-image: url("../../images/info-images/blue-bayou-restaurant-00.jpeg");
-    height: 300px;
-    width: 75%;
-    font-size: 30px;
-    background-color: gray;
-    color: black;
-    margin-bottom: 15px;
-}
-
-.orleans-paragraph {
-    color: black;
-    background-color: white;
-    opacity: 0.7;
-    height: 300px;
-    font-family: "blackPearl";
-}
-
-.new-orleans-info-page {
-    background-image: url("../../images/info-images/new_orleans.jpeg");
-    height: 300px;
-    width: 75%;
-    font-size: 30px;
-    background-color: gray;
-    color: white;
-    margin-bottom: 15px;
-}
-
-.tastes-paragraph {
-    color: black;
-    background-color: white;
-    opacity: 0.6;
-    height: 600px;
-    font-family: "blackPearl";
-}
-
-.big-tastes-info-page {
-    background-image: url("../../images/info-images/dining_view.jpeg");
-    height: auto;
-    width: 75%;
-    font-size: 30px;
-    background-color: gray;
-    color: white;
-    margin-bottom: 15px;
-}
-
-.contact-page-div {
-    align-items: center;
-    width: 50%;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0 auto;
-}
-
-.contact-page-form-group {
-    margin: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 25px;
 }
 
 .info-headers {
     font-weight: bold;
     font-family: "black pearl";
     color:black;
-    background-color: white;
-    opacity: 0.8;
-    width: 75%;
 }
 
-.info-page {
-
-    background-image: url("../../images/home-images/IMG_7766.JPG");
-    background-color: gray;
-  }
+.cristo-img {
+    padding-top: 175px;
+}

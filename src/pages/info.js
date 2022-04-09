@@ -30,13 +30,7 @@ export default function Info() {
           />
         </div>
 
-        <div class="grid-item">
-          <img
-            className="d-block w-100"
-            src={img3}
-            alt="First slide"
-          />
-        </div>
+
 
         <div class="grid-item">
           <p className="info-header">Hours</p>
@@ -48,6 +42,14 @@ export default function Info() {
         </div>
 
         <div class="grid-item">
+          <img
+            className="d-block w-100"
+            src={img3}
+            alt="First slide"
+          />
+        </div>
+
+        <div class="grid-item">
           <div className="meal-info">
             <p className="info-header">Meal Pricing</p>
             <a href="#/menu">Lunch Menu </a> - $$$ ($35 to $59.99 per adult)
@@ -55,13 +57,9 @@ export default function Info() {
             <a href="#/menu">Dinner Menu</a> - $$$ ($35 to $59.99 per adult)
           </div>
         </div>
-        <div class="grid-item">
-          <img
-            className="d-block w-100 "
-            src={img4}
-            alt="First slide"
-          />
-        </div>
+
+
+
         <div class="grid-item">
           <img
             className="d-block w-100 "
@@ -69,6 +67,9 @@ export default function Info() {
             alt="First slide"
           />
         </div>
+
+
+
         <div class="grid-item">
           <p className="info-header">Dine Down on the Bayou</p>
           <div className="paragraphs">
@@ -78,6 +79,14 @@ export default function Info() {
               unique setting where the bayou is, literally, by you!
             </p>
           </div>
+        </div>
+
+        <div class="grid-item">
+          <img
+            className="d-block w-100"
+            src={img4}
+            alt="First slide"
+          />
         </div>
 
         <div class="grid-item">
@@ -100,13 +109,9 @@ export default function Info() {
           />
         </div>
 
-        <div class="grid-item">
-          <img
-            className="d-block w-100 cristo-img"
-            src={img6}
-            alt="First slide"
-          />
-        </div>
+
+
+
 
         <div class="grid-item">
           <p className="info-header">Big Tastes from the Big Easy</p>
@@ -130,7 +135,19 @@ export default function Info() {
             </p>
           </div>
         </div>
+
+        <div class="grid-item">
+          <img
+            className="d-block w-100 cristo-img"
+            src={img6}
+            alt="First slide"
+          />
+        </div>
       </div>
+
+
+
+
 
       <hr />
       <div className="bottom-left-info-page">

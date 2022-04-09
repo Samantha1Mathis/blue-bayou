@@ -91,7 +91,7 @@ export default function MenuPage() {
         </OverlayTrigger>
       )}
       <div className="menu-page-container">
-        <Card style={{ width: "60%", padding: "10px" }}>
+        <Card className="menu-card-container">
           <Menu type={type} onAddButtonClicked={onAddButtonClicked} />
         </Card>
       </div>

@@ -11,6 +11,12 @@
     background-image: url("../../images/home-images/IMG_7768.JPG");
 }
 
+.menu-card-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 10px;
+}
+
 .menu-cart {
     position: sticky !important;
     max-width: 50px;

@@ -87,7 +87,7 @@ export default function Home() {
           <p style={{ fontSize: "25px" }}>Dinner: 4pm - 10pm</p>
         </div>
         <div>
-          <div className="home-img" style={{ width: "50%" }}>
+          <div className="home-img">
             <Menu />
             <br></br>
             <br></br>

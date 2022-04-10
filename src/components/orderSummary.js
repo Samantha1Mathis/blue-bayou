@@ -6,37 +6,61 @@ function OrderSummary(props) {
 
   const taxRate = 0.0725;
 
-  let initTotal = order.reduce(
-    (sum, a) => sum + parseFloat(a.price.substr(1)),
-    0
-  );
+  let initTotal = 0;
+  for (let item of order) {
+    initTotal += parseFloat(item.price.substr(1)) * item.quantity;
+  }
+  // Round values to 2 decimal places.
+
   let taxAmt = Math.round(initTotal * taxRate * 100) / 100;
   let total = Math.round((initTotal + taxAmt) * 100) / 100;
 
+  const makeDollarString = (amt) => {
+    let amtString = amt.toString();
+    if (amtString.split(".").length === 1) {
+      amtString += ".00";
+    } else {
+      let cents = amtString.split(".")[1];
+      if (cents.length === 1) {
+        amtString += "0";
+      }
+    }
+    return "$" + amtString;
+  };
+
   return (
-    <div>
-      {order.map((item, index) => {
-        return (
-          <div
-            className="order-summary-item-container"
-            key={`order-item-${index}`}
-          >
-            <div className="order-summary-item-name">{item.name}</div>
-            <div className="order-summary-item-price">{item.price}</div>
-          </div>
-        );
-      })}
+    <div className="order-summary-container">
+      {order &&
+        order.map((item, index) => {
+          return (
+            <div
+              className="order-summary-item-container"
+              key={`order-item-${index}`}
+            >
+              <div className="order-summary-item-name">
+                {item.quantity}x {item.name}
+              </div>
+              <div className="order-summary-item-price">
+                {makeDollarString(
+                  parseFloat(item.price.substr(1)) * item.quantity
+                )}
+              </div>
+            </div>
+          );
+        })}
       <div className="horizontal-break"></div>
       {showTax && (
         <div className="order-summary-item-container">
           <div className="order-summary-item-name">Tax:</div>
-          <div className="order-summary-item-price">{taxAmt}</div>
+          <div className="order-summary-item-price">
+            {makeDollarString(taxAmt)}
+          </div>
         </div>
       )}
       <div className="order-summary-item-container">
         <div className="order-summary-item-name">Total:</div>
         <div className="order-summary-item-price">
-          ${showTax ? total : initTotal}
+          {showTax ? makeDollarString(total) : makeDollarString(initTotal)}
         </div>
       </div>
     </div>

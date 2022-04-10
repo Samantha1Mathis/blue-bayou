@@ -1,0 +1,37 @@
+.contact-page {
+    background-image: url("../../images/home-images/IMG_7768.JPG");
+    background-color: gray;
+    height:1000px;
+  }
+
+  .holder {
+      color:black;
+      background-color:rgba(255, 255, 255, 0.8);
+      font-family: "blackPearl";
+      align-items: center;
+      height: 50px;
+      /* margin-left:25%;
+      margin-right: 25%; */
+  }
+
+.contact-form{
+    text-align: left;
+    background-color:white;
+    margin-left:25%;
+    margin-right: 25%;
+}
+
+.contact-page-form-group {
+    margin-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.form-label {
+    font-size: 20px;
+}
+
+.form-submit {
+    margin-bottom: 25px;
+    width: 900px;
+}

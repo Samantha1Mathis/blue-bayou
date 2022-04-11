@@ -11,10 +11,12 @@ import {
   readFromLocalStorage,
 } from "../utils/localStorage";
 import OrderSummary from "../components/orderSummary";
+import { extractQueryParam } from "../utils/window";
 
 function Checkout() {
   const navigate = useNavigate();
 
+  let [type, setType] = React.useState("");
   let [order, setOrder] = React.useState([]);
   let [startTime, setStartTime] = React.useState(null);
   let [activeKey, setActiveKey] = React.useState("0");
@@ -23,6 +25,11 @@ function Checkout() {
   let [errorMessage, setErrorMessage] = React.useState("");
 
   React.useEffect(() => {
+    let orderType = extractQueryParam("type");
+    if (orderType) {
+      setType(orderType);
+    }
+
     let orderData = readFromLocalStorage("order");
     if (orderData) {
       let userOrder = JSON.parse(orderData);
@@ -99,32 +106,37 @@ function Checkout() {
               </Button>
             </Accordion.Body>
           </Accordion.Item>
-          <Accordion.Item eventKey="1">
-            <Accordion.Header onClick={() => onHeaderClicked("1")}>
-              <h3 className="checkout-order-header">Pick Up Time</h3>
-            </Accordion.Header>
-            <Accordion.Body>
-              <p style={{ textAlign: "left" }}>
-                Select when you would like to pick your food up
-              </p>
-              <DatePicker
-                selected={startTime}
-                onChange={(time) => setStartTime(time)}
-                minTime={new Date().setHours(11, 0)}
-                maxTime={new Date().setHours(21, 0)}
-                excludeTimes={disableTimes}
-                showTimeSelect
-                showTimeSelectOnly
-                timeIntervals={15}
-                timeCaption="Time"
-                dateFormat="h:mm aa"
-                placeholderText="Pick a time for pickup"
-              />
-              <Button variant="outline-primary" onClick={onSelectButtonClicked}>
-                Select
-              </Button>
-            </Accordion.Body>
-          </Accordion.Item>
+          {type === "togo" && (
+            <Accordion.Item eventKey="1">
+              <Accordion.Header onClick={() => onHeaderClicked("1")}>
+                <h3 className="checkout-order-header">Pick Up Time</h3>
+              </Accordion.Header>
+              <Accordion.Body>
+                <p style={{ textAlign: "left" }}>
+                  Select when you would like to pick your food up
+                </p>
+                <DatePicker
+                  selected={startTime}
+                  onChange={(time) => setStartTime(time)}
+                  minTime={new Date().setHours(11, 0)}
+                  maxTime={new Date().setHours(21, 0)}
+                  excludeTimes={disableTimes}
+                  showTimeSelect
+                  showTimeSelectOnly
+                  timeIntervals={15}
+                  timeCaption="Time"
+                  dateFormat="h:mm aa"
+                  placeholderText="Pick a time for pickup"
+                />
+                <Button
+                  variant="outline-primary"
+                  onClick={onSelectButtonClicked}
+                >
+                  Select
+                </Button>
+              </Accordion.Body>
+            </Accordion.Item>
+          )}
           <Accordion.Item eventKey="2">
             <Accordion.Header onClick={() => onHeaderClicked("2")}>
               <h3 className="checkout-order-header">Payment Information</h3>

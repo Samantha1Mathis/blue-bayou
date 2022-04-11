@@ -13,6 +13,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
 
 .checkout-accordion {
@@ -49,3 +50,11 @@
     padding: 5px;
     font-weight: bold;
 }
+
+.checkout-background {
+
+    background-image: url("../../images/home-images/IMG_7768.JPG");
+    background-color: gray;
+    color:white;
+    height:900px;
+  }

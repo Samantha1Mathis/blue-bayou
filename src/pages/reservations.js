@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { NavbarCustom } from "../components/navbar";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import "../styles/pages/home.css";
+import "../styles/pages/reservations.css";
 export default function Reservations() {
   const [date, setDate] = useState(new Date());
   const d = new Date();
@@ -30,10 +30,7 @@ export default function Reservations() {
           flexWrap: "wrap",
         }}
       >
-        <div
-          className="home-page"
-          style={{ height: "1000px", width: "5000px" }}
-        >
+        <div className="res-page" style={{ height: "1000px", width: "5000px" }}>
           <div
             className="hours text-dark"
             style={{

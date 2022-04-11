@@ -6,6 +6,7 @@ import { NavbarCustom } from "../components/navbar";
 import shoppingCart from "../images/menu-images/shopping_cart.png";
 import { extractQueryParam } from "../utils/window";
 import "../styles/pages/menu.css";
+import "../styles/pages/reservations.css";
 import {
   readFromLocalStorage,
   writeToLocalStorage,
@@ -59,31 +60,33 @@ export default function MenuPage() {
   return (
     <>
       <NavbarCustom />
-      {type && (
-        <OverlayTrigger
-          trigger={["hover", "focus"]}
-          key="bottom"
-          placement="bottom"
-          overlay={
-            <Popover className="checkout-overlay">
-              <OrderSummary order={order} />
-            </Popover>
-          }
-        >
-          <div className="menu-cart" onClick={onCartButtonClicked}>
-            <img
-              className="shopping-cart-image"
-              src={shoppingCart}
-              alt="Shopping Cart"
-            />
-            <div className="cart-quantity">{numItems}</div>
-          </div>
-        </OverlayTrigger>
-      )}
-      <div className="menu-page-container">
-        <Card style={{ width: "60%", padding: "10px" }}>
-          <Menu type={type} onAddButtonClicked={onAddButtonClicked} />
-        </Card>
+      <div className="res-page">
+        {type && (
+          <OverlayTrigger
+            trigger={["hover", "focus"]}
+            key="bottom"
+            placement="bottom"
+            overlay={
+              <Popover className="checkout-overlay">
+                <OrderSummary order={order} />
+              </Popover>
+            }
+          >
+            <div className="menu-cart" onClick={onCartButtonClicked}>
+              <img
+                className="shopping-cart-image"
+                src={shoppingCart}
+                alt="Shopping Cart"
+              />
+              <div className="cart-quantity">{numItems}</div>
+            </div>
+          </OverlayTrigger>
+        )}
+        <div className="menu-page-container">
+          <Card style={{ width: "60%", padding: "10px" }}>
+            <Menu type={type} onAddButtonClicked={onAddButtonClicked} />
+          </Card>
+        </div>
       </div>
     </>
   );

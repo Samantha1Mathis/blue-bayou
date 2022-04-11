@@ -1,3 +1,10 @@
 .reservations{
     text-align: center;
 }
+
+.res-page {
+
+    background-image: url("../../images/home-images/IMG_7771.JPG");
+    background-color: gray;
+    color:white;
+  }

@@ -15,14 +15,14 @@ export default function Info() {
   return (
     <>
       <NavbarCustom />
-      <div class="grid-container">
-        <div class="grid-item">
+      <div className="grid-container">
+        <div className="grid-item">
           <div className="info-name">
             <p>Blue Bayou</p>
           </div>
         </div>
 
-        <div class="grid-item">
+        <div className="grid-item">
           <img
             className="d-block w-100 img-dimensions"
             src={img5}
@@ -32,7 +32,7 @@ export default function Info() {
 
 
 
-        <div class="grid-item">
+        <div className="grid-item">
           <p className="info-header">Hours</p>
           <div className="hour-info">
 
@@ -41,7 +41,7 @@ export default function Info() {
           </div>
         </div>
 
-        <div class="grid-item">
+        <div className="grid-item">
           <img
             className="d-block w-100"
             src={img3}
@@ -49,7 +49,7 @@ export default function Info() {
           />
         </div>
 
-        <div class="grid-item">
+        <div className="grid-item">
           <div className="meal-info">
             <p className="info-header">Meal Pricing</p>
             <a href="#/menu">Lunch Menu </a> - $$$ ($35 to $59.99 per adult)
@@ -60,7 +60,7 @@ export default function Info() {
 
 
 
-        <div class="grid-item">
+        <div className="grid-item">
           <img
             className="d-block w-100 "
             src={img2}
@@ -70,7 +70,7 @@ export default function Info() {
 
 
 
-        <div class="grid-item">
+        <div className="grid-item">
           <p className="info-header">Dine Down on the Bayou</p>
           <div className="paragraphs">
             <p>Step into perpertual twilight as the nighttime ambiance of the watery setting
@@ -81,7 +81,7 @@ export default function Info() {
           </div>
         </div>
 
-        <div class="grid-item">
+        <div className="grid-item">
           <img
             className="d-block w-100"
             src={img4}
@@ -89,7 +89,7 @@ export default function Info() {
           />
         </div>
 
-        <div class="grid-item">
+        <div className="grid-item">
           <p className="info-header">A New Orleans Square Classic</p>
           <div className="paragraphs">
             <p>Blue Bayou has been a must-visit destination for many Disneyland Resort Guests
@@ -101,7 +101,7 @@ export default function Info() {
           </div>
         </div>
 
-        <div class="grid-item">
+        <div className="grid-item">
           <img
             className="d-block w-100 "
             src={img1}
@@ -113,7 +113,7 @@ export default function Info() {
 
 
 
-        <div class="grid-item">
+        <div className="grid-item">
           <p className="info-header">Big Tastes from the Big Easy</p>
           <div className="paragraphs">
             <p> Kick off your memorable meal with Southern-inspired starters. Next, choose
@@ -136,7 +136,7 @@ export default function Info() {
           </div>
         </div>
 
-        <div class="grid-item">
+        <div className="grid-item">
           <img
             className="d-block w-100 cristo-img"
             src={img6}

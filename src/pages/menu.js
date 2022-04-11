@@ -24,19 +24,29 @@ export default function MenuPage() {
     let menuType = extractQueryParam("type");
     setType(menuType);
     let order = readFromLocalStorage("order");
-    console.log(order);
     if (order) {
       order = JSON.parse(order);
       setOrder(order);
-      setNumItems(order.length);
+
+      // Count the number of items.
+      let total = order.reduce((sum, a) => sum + a.quantity, 0);
+
+      setNumItems(total);
     }
   }, []);
 
   const onAddButtonClicked = (meal) => {
-    order.push(meal);
+    let existingItem = order.filter((item) => item.name === meal.name)[0];
+    if (!!existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      let item = { ...meal };
+      item.quantity = 1;
+      order.push(item);
+    }
     setOrder(order);
     writeToLocalStorage("order", JSON.stringify(order));
-    setNumItems(order.length);
+    setNumItems(numItems + 1);
   };
 
   const onCartButtonClicked = () => {
@@ -60,33 +70,31 @@ export default function MenuPage() {
   return (
     <>
       <NavbarCustom />
-      <div className="res-page">
-        {type && (
-          <OverlayTrigger
-            trigger={["hover", "focus"]}
-            key="bottom"
-            placement="bottom"
-            overlay={
-              <Popover className="checkout-overlay">
-                <OrderSummary order={order} />
-              </Popover>
-            }
-          >
-            <div className="menu-cart" onClick={onCartButtonClicked}>
-              <img
-                className="shopping-cart-image"
-                src={shoppingCart}
-                alt="Shopping Cart"
-              />
-              <div className="cart-quantity">{numItems}</div>
-            </div>
-          </OverlayTrigger>
-        )}
-        <div className="menu-page-container">
-          <Card style={{ width: "60%", padding: "10px" }}>
-            <Menu type={type} onAddButtonClicked={onAddButtonClicked} />
-          </Card>
-        </div>
+      {type && (
+        <OverlayTrigger
+          trigger={["hover", "focus"]}
+          key="bottom"
+          placement="bottom"
+          overlay={
+            <Popover className="checkout-overlay">
+              <OrderSummary order={order} />
+            </Popover>
+          }
+        >
+          <div className="menu-cart" onClick={onCartButtonClicked}>
+            <img
+              className="shopping-cart-image"
+              src={shoppingCart}
+              alt="Shopping Cart"
+            />
+            <div className="cart-quantity">{numItems}</div>
+          </div>
+        </OverlayTrigger>
+      )}
+      <div className="menu-page-container">
+        <Card className="menu-card-container">
+          <Menu type={type} onAddButtonClicked={onAddButtonClicked} />
+        </Card>
       </div>
     </>
   );

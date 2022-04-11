@@ -4,7 +4,6 @@ import DatePicker from "react-datepicker";
 import { Accordion, Button } from "react-bootstrap";
 import { NavbarCustom } from "../components/navbar";
 import Payment from "../components/payment";
-import { extractQueryParam } from "../utils/window";
 import "react-datepicker/dist/react-datepicker.css";
 import "../styles/pages/checkout.css";
 import {
@@ -24,8 +23,11 @@ function Checkout() {
   let [errorMessage, setErrorMessage] = React.useState("");
 
   React.useEffect(() => {
-    let userOrder = JSON.parse(readFromLocalStorage("order"));
-    setOrder(userOrder);
+    let orderData = readFromLocalStorage("order");
+    if (orderData) {
+      let userOrder = JSON.parse(orderData);
+      setOrder(userOrder);
+    }
 
     let times = [];
     let startDate = new Date();
@@ -64,11 +66,17 @@ function Checkout() {
   };
 
   const onConfirmButtonClicked = () => {
-    if (startTime && paymentSuccess) {
+    if (order.length > 0 && startTime && paymentSuccess) {
       deleteFromLocalStorage("order");
-      navigate("/complete");
+      navigate("/complete?type=order");
+    } else if (order.length === 0) {
+      setErrorMessage("You need to add something to your order to checkout!");
+    } else if (!startTime) {
+      setErrorMessage("You need to set a pick up time!");
+    } else if (!paymentSuccess) {
+      setErrorMessage("You need to actually pay for what you order!");
     } else {
-      setErrorMessage("You need to properly complete your checkout!");
+      setErrorMessage("Something went wrong.");
     }
   };
 

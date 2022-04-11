@@ -16,7 +16,7 @@ export default function Reservations() {
 
     return currentDate.getTime() < selectedDate.getTime();
   };
-  const routeChange = () => (window.location.href = "/#/complete");
+  const routeChange = () => (window.location.href = "/#/complete?type=reservation");
   return (
     <>
       <NavbarCustom />

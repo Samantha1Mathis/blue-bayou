@@ -1,23 +1,7 @@
-.contact-page {
-    background-image: url("../../images/home-images/IMG_7768.JPG");
-    background-color: gray;
-    height:1000px;
-  }
-
-  .holder {
-      color:black;
-      background-color:rgba(255, 255, 255, 0.8);
-      font-family: "blackPearl";
-      align-items: center;
-      height: 50px;
-      /* margin-left:25%;
-      margin-right: 25%; */
-  }
-
-.contact-form{
+.contact-form {
     text-align: left;
-    background-color:white;
-    margin-left:25%;
+    background-color: white;
+    margin-left: 25%;
     margin-right: 25%;
 }
 

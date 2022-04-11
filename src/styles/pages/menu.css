@@ -53,3 +53,7 @@
 .checkout-overlay {
     position: absolute !important;
 }
+
+.fix-position {
+    position: fixed !important;
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, OverlayTrigger, Popover } from "react-bootstrap";
+import { Card, Offcanvas, Button } from "react-bootstrap";
 import { Menu } from "../components/menu";
 import { NavbarCustom } from "../components/navbar";
 import shoppingCart from "../images/menu-images/shopping_cart.png";
@@ -15,6 +15,7 @@ import OrderSummary from "../components/orderSummary";
 export default function MenuPage() {
   const navigate = useNavigate();
 
+  let [show, setShow] = React.useState(false);
   let [type, setType] = React.useState("");
   let [order, setOrder] = React.useState([]);
   let [numItems, setNumItems] = React.useState(0);
@@ -48,7 +49,7 @@ export default function MenuPage() {
     setNumItems(numItems + 1);
   };
 
-  const onCartButtonClicked = () => {
+  const onCheckoutButtonClicked = () => {
     if (order.length === 0) {
       return;
     }
@@ -69,7 +70,7 @@ export default function MenuPage() {
   return (
     <>
       <NavbarCustom />
-      {type && (
+      {/* {type && (
         <OverlayTrigger
           trigger={["hover", "focus"]}
           key="bottom"
@@ -89,6 +90,33 @@ export default function MenuPage() {
             <div className="cart-quantity">{numItems}</div>
           </div>
         </OverlayTrigger>
+      )} */}
+      {type && (
+        <>
+          <div className="menu-cart" onClick={() => setShow(true)}>
+            <img
+              className="shopping-cart-image"
+              src={shoppingCart}
+              alt="Shopping Cart"
+            />
+            <div className="cart-quantity">{numItems}</div>
+          </div>
+          <Offcanvas
+            show={show}
+            onHide={() => setShow(false)}
+            placement={"end"}
+            className="fix-position"
+            backdropClassName="fix-position"
+          >
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title>Your Order</Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <OrderSummary order={order} />
+              <Button onClick={onCheckoutButtonClicked}>Checkout</Button>
+            </Offcanvas.Body>
+          </Offcanvas>
+        </>
       )}
       <div className="menu-page-container">
         <Card className="menu-card-container">

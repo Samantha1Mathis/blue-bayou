@@ -68,7 +68,7 @@ function Checkout() {
   const onConfirmButtonClicked = () => {
     if (order.length > 0 && startTime && paymentSuccess) {
       deleteFromLocalStorage("order");
-      navigate("/complete");
+      navigate("/complete?type=order");
     } else if (order.length === 0) {
       setErrorMessage("You need to add something to your order to checkout!");
     } else if (!startTime) {

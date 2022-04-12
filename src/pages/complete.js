@@ -6,31 +6,22 @@ import "../styles/pages/complete.css";
 import "../styles/pages/home.css";
 
 export default function Complete() {
-  const navigate = useNavigate();
-
-  // const [type, setType] = React.useState("");
-  // const [reservation, setReservation] = React.useState(false);
-  // const [order, setOrder] = React.useState(false);
   let reservation = false;
   let order = false;
-  // let msg = "HOLDER";
   let [firstMsg, setFirstMsg] = React.useState("");
   let [msg, setMsg] = React.useState("");
 
   React.useEffect(() => {
     let transactionType = extractQueryParam("type");
-    // setType(transactionType);
 
     if (transactionType === "reservation") {
       reservation = true;
       setFirstMsg("Reservation Complete");
       setMsg("We look forward to having you dine with us!");
-      // setReservation(true);
     } else if (transactionType === "order") {
       order = true;
       setFirstMsg("Transaction Complete")
       setMsg("Thank you for your purchase! Have a magical day!");
-      // setOrder(true);
     }
   }, []);
 

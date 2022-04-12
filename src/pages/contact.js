@@ -15,7 +15,6 @@ export default function Contact() {
 
     para.style.fontSize = '45px';
     para.style.fontFamily = "blackPearl";
-    para.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
 
     const formDiv = document.getElementById("formDiv");
     formDiv.appendChild(para);

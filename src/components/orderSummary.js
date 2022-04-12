@@ -1,15 +1,8 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 import "../styles/components/orderSummary.css";
 
 function OrderSummary(props) {
-  let {
-    order,
-    showTax,
-    editable,
-    onClearCartButtonClicked,
-    onItemQuantityChange,
-  } = props;
+  let { order, showTax, editable, onItemQuantityChange } = props;
 
   const taxRate = 0.0725;
 

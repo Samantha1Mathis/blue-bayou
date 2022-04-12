@@ -116,7 +116,6 @@ export default function MenuPage() {
               <OrderSummary
                 order={order}
                 editable={true}
-                onClearCartButtonClicked={onClearCartButtonClicked}
                 onItemQuantityChange={onItemQuantityChange}
               />
               <div className="cart-button-row">

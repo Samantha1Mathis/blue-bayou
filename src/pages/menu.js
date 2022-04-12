@@ -7,6 +7,7 @@ import shoppingCart from "../images/menu-images/shopping_cart.png";
 import { extractQueryParam } from "../utils/window";
 import "../styles/pages/menu.css";
 import {
+  deleteFromLocalStorage,
   readFromLocalStorage,
   writeToLocalStorage,
 } from "../utils/localStorage";
@@ -49,6 +50,26 @@ export default function MenuPage() {
     setNumItems(numItems + 1);
   };
 
+  const onClearCartButtonClicked = () => {
+    deleteFromLocalStorage("order");
+    setOrder([]);
+    setNumItems(0);
+  };
+
+  const onItemQuantityChange = (event, index) => {
+    if (parseInt(event.target.value) < order[index].quantity) {
+      setNumItems(numItems--);
+    } else {
+      setNumItems(numItems++);
+    }
+    order[index].quantity = parseInt(event.target.value);
+    if (order[index.quantity] === 0) {
+      order.splice(index, 1);
+    }
+    setOrder(order);
+    writeToLocalStorage("order", JSON.stringify(order));
+  };
+
   const onCheckoutButtonClicked = () => {
     if (order.length === 0) {
       return;
@@ -70,27 +91,6 @@ export default function MenuPage() {
   return (
     <>
       <NavbarCustom />
-      {/* {type && (
-        <OverlayTrigger
-          trigger={["hover", "focus"]}
-          key="bottom"
-          placement="bottom"
-          overlay={
-            <Popover className="checkout-overlay">
-              <OrderSummary order={order} />
-            </Popover>
-          }
-        >
-          <div className="menu-cart" onClick={onCartButtonClicked}>
-            <img
-              className="shopping-cart-image"
-              src={shoppingCart}
-              alt="Shopping Cart"
-            />
-            <div className="cart-quantity">{numItems}</div>
-          </div>
-        </OverlayTrigger>
-      )} */}
       {type && (
         <>
           <div className="menu-cart" onClick={() => setShow(true)}>
@@ -112,8 +112,15 @@ export default function MenuPage() {
               <Offcanvas.Title>Your Order</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <OrderSummary order={order} />
-              <Button onClick={onCheckoutButtonClicked}>Checkout</Button>
+              <OrderSummary
+                order={order}
+                editable={true}
+                onClearCartButtonClicked={onClearCartButtonClicked}
+                onItemQuantityChange={onItemQuantityChange}
+              />
+              {numItems > 0 && (
+                <Button onClick={onCheckoutButtonClicked}>Checkout</Button>
+              )}
             </Offcanvas.Body>
           </Offcanvas>
         </>

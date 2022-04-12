@@ -5,6 +5,7 @@
 .order-summary-item-container {
     display: flex;
     flex-direction: row;
+    margin: 3px;
 }
 
 .order-summary-item-container:last-child {

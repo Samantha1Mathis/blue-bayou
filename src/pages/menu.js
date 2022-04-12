@@ -63,7 +63,8 @@ export default function MenuPage() {
       setNumItems(numItems++);
     }
     order[index].quantity = parseInt(event.target.value);
-    if (order[index.quantity] === 0) {
+    if (order[index].quantity === 0) {
+      console.log("removing element");
       order.splice(index, 1);
     }
     setOrder(order);
@@ -118,9 +119,25 @@ export default function MenuPage() {
                 onClearCartButtonClicked={onClearCartButtonClicked}
                 onItemQuantityChange={onItemQuantityChange}
               />
-              {numItems > 0 && (
-                <Button onClick={onCheckoutButtonClicked}>Checkout</Button>
-              )}
+              <div className="cart-button-row">
+                {order.length > 0 && (
+                  <Button
+                    className="cart-button"
+                    onClick={onClearCartButtonClicked}
+                    variant="danger"
+                  >
+                    Clear Cart
+                  </Button>
+                )}
+                {numItems > 0 && (
+                  <Button
+                    className="cart-button"
+                    onClick={onCheckoutButtonClicked}
+                  >
+                    Checkout
+                  </Button>
+                )}
+              </div>
             </Offcanvas.Body>
           </Offcanvas>
         </>

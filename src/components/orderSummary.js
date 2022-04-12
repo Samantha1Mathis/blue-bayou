@@ -37,11 +37,6 @@ function OrderSummary(props) {
 
   return (
     <div className="order-summary-container">
-      {editable && order.length > 0 && (
-        <Button onClick={onClearCartButtonClicked} variant="danger">
-          Clear Cart
-        </Button>
-      )}
       {order &&
         order.map((item, index) => {
           return (
@@ -58,9 +53,9 @@ function OrderSummary(props) {
                       id="quantity"
                       name="quantity"
                       value={item.quantity}
-                      onChange={(event) => onItemQuantityChange(event, index)}
+                      onInput={(event) => onItemQuantityChange(event, index)}
                     />
-                    <span>x {item.name}</span>
+                    <span> x {item.name}</span>
                   </>
                 )}
                 {!editable && (

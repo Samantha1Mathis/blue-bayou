@@ -1,12 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, OverlayTrigger, Popover } from "react-bootstrap";
+import { Card, Offcanvas, Button } from "react-bootstrap";
 import { Menu } from "../components/menu";
 import { NavbarCustom } from "../components/navbar";
 import shoppingCart from "../images/menu-images/shopping_cart.png";
 import { extractQueryParam } from "../utils/window";
 import "../styles/pages/menu.css";
 import {
+  deleteFromLocalStorage,
   readFromLocalStorage,
   writeToLocalStorage,
 } from "../utils/localStorage";
@@ -15,6 +16,7 @@ import OrderSummary from "../components/orderSummary";
 export default function MenuPage() {
   const navigate = useNavigate();
 
+  let [show, setShow] = React.useState(false);
   let [type, setType] = React.useState("");
   let [order, setOrder] = React.useState([]);
   let [numItems, setNumItems] = React.useState(0);
@@ -48,7 +50,28 @@ export default function MenuPage() {
     setNumItems(numItems + 1);
   };
 
-  const onCartButtonClicked = () => {
+  const onClearCartButtonClicked = () => {
+    deleteFromLocalStorage("order");
+    setOrder([]);
+    setNumItems(0);
+  };
+
+  const onItemQuantityChange = (event, index) => {
+    if (parseInt(event.target.value) < order[index].quantity) {
+      setNumItems(numItems--);
+    } else {
+      setNumItems(numItems++);
+    }
+    order[index].quantity = parseInt(event.target.value);
+    if (order[index].quantity === 0) {
+      console.log("removing element");
+      order.splice(index, 1);
+    }
+    setOrder(order);
+    writeToLocalStorage("order", JSON.stringify(order));
+  };
+
+  const onCheckoutButtonClicked = () => {
     if (order.length === 0) {
       return;
     }
@@ -70,17 +93,8 @@ export default function MenuPage() {
     <>
       <NavbarCustom />
       {type && (
-        <OverlayTrigger
-          trigger={["hover", "focus"]}
-          key="bottom"
-          placement="bottom"
-          overlay={
-            <Popover className="checkout-overlay">
-              <OrderSummary order={order} />
-            </Popover>
-          }
-        >
-          <div className="menu-cart" onClick={onCartButtonClicked}>
+        <>
+          <div className="menu-cart" onClick={() => setShow(true)}>
             <img
               className="shopping-cart-image"
               src={shoppingCart}
@@ -88,7 +102,44 @@ export default function MenuPage() {
             />
             <div className="cart-quantity">{numItems}</div>
           </div>
-        </OverlayTrigger>
+          <Offcanvas
+            show={show}
+            onHide={() => setShow(false)}
+            placement={"end"}
+            className="fix-position"
+            backdropClassName="fix-position"
+          >
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title>Your Order</Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <OrderSummary
+                order={order}
+                editable={true}
+                onItemQuantityChange={onItemQuantityChange}
+              />
+              <div className="cart-button-row">
+                {order.length > 0 && (
+                  <Button
+                    className="cart-button"
+                    onClick={onClearCartButtonClicked}
+                    variant="danger"
+                  >
+                    Clear Cart
+                  </Button>
+                )}
+                {numItems > 0 && (
+                  <Button
+                    className="cart-button"
+                    onClick={onCheckoutButtonClicked}
+                  >
+                    Checkout
+                  </Button>
+                )}
+              </div>
+            </Offcanvas.Body>
+          </Offcanvas>
+        </>
       )}
       <div className="menu-page-container">
         <Card className="menu-card-container">

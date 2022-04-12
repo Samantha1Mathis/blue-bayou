@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/components/orderSummary.css";
 
 function OrderSummary(props) {
-  let { order, showTax } = props;
+  let { order, showTax, editable, onItemQuantityChange } = props;
 
   const taxRate = 0.0725;
 
@@ -38,7 +38,24 @@ function OrderSummary(props) {
               key={`order-item-${index}`}
             >
               <div className="order-summary-item-name">
-                {item.quantity}x {item.name}
+                {editable && (
+                  <>
+                    <input
+                      className="edit-quantity"
+                      type="number"
+                      id="quantity"
+                      name="quantity"
+                      value={item.quantity}
+                      onInput={(event) => onItemQuantityChange(event, index)}
+                    />
+                    <span> x {item.name}</span>
+                  </>
+                )}
+                {!editable && (
+                  <span>
+                    {item.quantity}x {item.name}
+                  </span>
+                )}
               </div>
               <div className="order-summary-item-price">
                 {makeDollarString(

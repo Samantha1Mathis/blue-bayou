@@ -53,3 +53,16 @@
 .checkout-overlay {
     position: absolute !important;
 }
+
+.fix-position {
+    position: fixed !important;
+}
+
+.cart-button {
+    margin: 3px;
+}
+
+.cart-button-row {
+    display: flex;
+    flex-direction: row;
+}

@@ -64,7 +64,6 @@ export default function MenuPage() {
     }
     order[index].quantity = parseInt(event.target.value);
     if (order[index].quantity === 0) {
-      console.log("removing element");
       order.splice(index, 1);
     }
     setOrder(order);

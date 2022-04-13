@@ -101,3 +101,10 @@
     background: rgba(95, 158, 160, 0.6);
     cursor: pointer;
 }
+
+.left-padding {
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    margin-right: 5px;
+}

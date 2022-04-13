@@ -1,9 +1,15 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import "../styles/components/mealInformation.css";
 
 function MealInformation(props) {
-  const { ingredients, picture } = props;
+  const {
+    meal,
+    showPriceOptions,
+    optionNames,
+    priceOptions,
+    onPriceOptionClicked,
+  } = props;
   const images = require.context(
     "../images/menu-images/",
     false,
@@ -13,28 +19,50 @@ function MealInformation(props) {
   let [imageName, setImageName] = React.useState(undefined);
 
   React.useEffect(() => {
-    if (!picture) {
+    if (!meal.picture) {
       return;
     }
-    let imageData = images(`./${picture}`);
+    let imageData = images(`./${meal.picture}`);
     // setImageName(imageData);
     setImageName(imageData);
-  }, [images, picture]);
+  }, [images, meal.picture]);
 
   return (
     <Card>
-      <Card.Body className="meal-information-container">
-        {ingredients && (
-          <div className="meal-information-ingredients">
-            Ingredients: {ingredients}
+      <Card.Body>
+        <div className="meal-information-container">
+          {meal.ingredients && (
+            <div className="meal-information-ingredients">
+              Ingredients: {meal.ingredients}
+            </div>
+          )}
+          {imageName && (
+            <img
+              className="meal-information-image"
+              src={imageName}
+              alt="What you're eating"
+            />
+          )}
+        </div>
+        {showPriceOptions && (
+          <div className="price-option-container">
+            {priceOptions.map((option, index) => {
+              return (
+                <Button
+                  className="meal-information-price-option"
+                  key={`meal-price-option-${option}-${index}`}
+                  onClick={() => {
+                    let addMeal = { ...meal };
+                    addMeal.name = `${optionNames[index]} ${meal.name}`;
+                    addMeal.price = option.substr(1);
+                    onPriceOptionClicked(addMeal);
+                  }}
+                >
+                  Add {optionNames[index]} - {option}
+                </Button>
+              );
+            })}
           </div>
-        )}
-        {imageName && (
-          <img
-            className="meal-information-image"
-            src={imageName}
-            alt="What you're eating"
-          />
         )}
       </Card.Body>
     </Card>

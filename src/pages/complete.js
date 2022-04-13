@@ -1,6 +1,5 @@
 import React from "react";
 import { NavbarCustom } from "../components/navbar.js";
-import { useNavigate } from "react-router-dom";
 import { extractQueryParam } from "../utils/window";
 import "../styles/pages/complete.css";
 import "../styles/pages/home.css";

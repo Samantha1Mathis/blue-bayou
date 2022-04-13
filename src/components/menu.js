@@ -8,7 +8,7 @@ import menuData from "../data/menu";
 import "../styles/components/menu.css";
 
 export function Menu(props) {
-  let { type, defaultMenu } = props;
+  let { type } = props;
   let lunchKeys = Object.keys(menuData.Lunch);
   let dinnerKeys = Object.keys(menuData.Dinner);
 
@@ -33,10 +33,16 @@ export function Menu(props) {
   };
 
   React.useEffect(() => {
-    let startMenu = defaultMenu || "Lunch";
-    setCurrentMenu(startMenu);
-    changeActiveKeys(startMenu);
-  }, [defaultMenu]);
+    let now = new Date();
+    let endOfLunch = new Date().setHours(15, 55);
+    if (now > endOfLunch) {
+      setCurrentMenu("Dinner");
+      changeActiveKeys("Dinner");
+    } else {
+      setCurrentMenu("Lunch");
+      changeActiveKeys("Lunch");
+    }
+  }, []);
 
   return (
     <div

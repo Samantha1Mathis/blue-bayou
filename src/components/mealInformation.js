@@ -54,7 +54,8 @@ function MealInformation(props) {
                   onClick={() => {
                     let addMeal = { ...meal };
                     addMeal.name = `${optionNames[index]} ${meal.name}`;
-                    addMeal.price = option.substr(1);
+                    addMeal.price = option.replace(/\s/g, "");
+                    console.log(addMeal.price);
                     onPriceOptionClicked(addMeal);
                   }}
                 >

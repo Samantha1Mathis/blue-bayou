@@ -22,6 +22,7 @@ function Checkout() {
   let [activeKey, setActiveKey] = React.useState("0");
   let [disableTimes, setDisableTimes] = React.useState([]);
   let [paymentSuccess, setPaymentSuccess] = React.useState(false);
+  let [isOpen, setIsOpen] = React.useState(true);
   let [errorMessage, setErrorMessage] = React.useState("");
 
   React.useEffect(() => {
@@ -50,6 +51,10 @@ function Checkout() {
       startDate.setMinutes(currentMinutes);
     }
     setDisableTimes(times);
+
+    if (times[times.length - 1] >= new Date().setHours(21, 0)) {
+      setIsOpen(false);
+    }
   }, []);
 
   const onHeaderClicked = (newKey) => {
@@ -58,7 +63,11 @@ function Checkout() {
 
   const onCheckoutButtonClicked = () => {
     setErrorMessage(false);
-    setActiveKey("1");
+    if (type === "togo") {
+      setActiveKey("1");
+    } else {
+      setActiveKey("2");
+    }
   };
 
   const onSelectButtonClicked = () => {
@@ -73,9 +82,14 @@ function Checkout() {
   };
 
   const onConfirmButtonClicked = () => {
-    if (order.length > 0 && startTime && paymentSuccess) {
+    if (order.length > 0 && type === "togo" && startTime && paymentSuccess) {
       deleteFromLocalStorage("order");
-      navigate("/complete?type=order");
+      navigate("/complete?type=togo");
+    } else if (order.length > 0 && type === "inperson" && paymentSuccess) {
+      deleteFromLocalStorage("order");
+      navigate("/complete?type=inperson");
+    } else if (!isOpen) {
+      setErrorMessage("We're not open! Please try again tomorrow.");
     } else if (order.length === 0) {
       setErrorMessage("You need to add something to your order to checkout!");
     } else if (!startTime) {
@@ -90,6 +104,13 @@ function Checkout() {
   return (
     <>
       <NavbarCustom />
+      {!isOpen && (
+        <div className="error-message" style={{ textAlign: "center" }}>
+          Thank you for your interest, but we're not open anymore today. You
+          won't be able to finish checking out. Please try again tomorrow. Our
+          hours are 11am-9pm for take out ordering.
+        </div>
+      )}
       <div className="checkout-container">
         <Accordion className="checkout-accordion" flush activeKey={activeKey}>
           <Accordion.Item eventKey="0">
@@ -112,28 +133,37 @@ function Checkout() {
                 <h3 className="checkout-order-header">Pick Up Time</h3>
               </Accordion.Header>
               <Accordion.Body>
-                <p style={{ textAlign: "left" }}>
-                  Select when you would like to pick your food up
-                </p>
-                <DatePicker
-                  selected={startTime}
-                  onChange={(time) => setStartTime(time)}
-                  minTime={new Date().setHours(11, 0)}
-                  maxTime={new Date().setHours(21, 0)}
-                  excludeTimes={disableTimes}
-                  showTimeSelect
-                  showTimeSelectOnly
-                  timeIntervals={15}
-                  timeCaption="Time"
-                  dateFormat="h:mm aa"
-                  placeholderText="Pick a time for pickup"
-                />
-                <Button
-                  variant="outline-primary"
-                  onClick={onSelectButtonClicked}
-                >
-                  Select
-                </Button>
+                {isOpen && (
+                  <>
+                    <p style={{ textAlign: "left" }}>
+                      Select when you would like to pick your food up
+                    </p>
+                    <DatePicker
+                      selected={startTime}
+                      onChange={(time) => setStartTime(time)}
+                      minTime={new Date().setHours(11, 0)}
+                      maxTime={new Date().setHours(21, 0)}
+                      excludeTimes={disableTimes}
+                      showTimeSelect
+                      showTimeSelectOnly
+                      timeIntervals={15}
+                      timeCaption="Time"
+                      dateFormat="h:mm aa"
+                      placeholderText="Pick a time for pickup"
+                    />
+                    <Button
+                      variant="outline-primary"
+                      onClick={onSelectButtonClicked}
+                    >
+                      Select
+                    </Button>
+                  </>
+                )}
+                {!isOpen && (
+                  <p style={{ textAlign: "left" }}>
+                    We're not open! Please try again tomorrow.
+                  </p>
+                )}
               </Accordion.Body>
             </Accordion.Item>
           )}
@@ -156,15 +186,17 @@ function Checkout() {
                 )}
                 <OrderSummary order={order} showTax={true} />
                 <div className="horizontal-break"></div>
-                <div>
-                  <span>Pickup Time: </span>
-                  <DatePicker
-                    selected={startTime}
-                    timeCaption="Time"
-                    dateFormat="h:mm aa"
-                    disabled
-                  />
-                </div>
+                {type === "togo" && (
+                  <div>
+                    <span>Pickup Time: </span>
+                    <DatePicker
+                      selected={startTime}
+                      timeCaption="Time"
+                      dateFormat="h:mm aa"
+                      disabled
+                    />
+                  </div>
+                )}
               </div>
               <Button
                 variant="outline-primary"

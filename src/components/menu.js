@@ -84,7 +84,7 @@ export function Menu(props) {
             {menuData[currentMenu][key].map((meal, mealIndex) => {
               return (
                 <div className="menu-accordion-container">
-                  {type && (
+                  {type && meal.price && (
                     <div
                       onClick={() => {
                         meal.price.split("|").length === 2
@@ -96,9 +96,7 @@ export function Menu(props) {
                       +
                     </div>
                   )}
-                  {/* {type && meal.price.includes("|") && (
-                    <div className="left-padding" />
-                  )} */}
+                  {type && !meal.price && <div className="left-padding" />}
                   <Accordion
                     style={{ width: "100%" }}
                     activeKey={showAccordion}

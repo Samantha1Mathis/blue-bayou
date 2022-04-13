@@ -64,7 +64,6 @@ export default function MenuPage() {
     }
     order[index].quantity = parseInt(event.target.value);
     if (order[index].quantity === 0) {
-      console.log("removing element");
       order.splice(index, 1);
     }
     setOrder(order);
@@ -141,7 +140,10 @@ export default function MenuPage() {
           </Offcanvas>
         </>
       )}
-      <div className="menu-page-container">
+      <div
+        style={{ marginTop: type ? "-50px" : "0px" }}
+        className="menu-page-container"
+      >
         <Card className="menu-card-container">
           <Menu type={type} onAddButtonClicked={onAddButtonClicked} />
         </Card>

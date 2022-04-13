@@ -12,6 +12,7 @@ export function Menu(props) {
   let lunchKeys = Object.keys(menuData.Lunch);
   let dinnerKeys = Object.keys(menuData.Dinner);
 
+  let [showAccordion, setShowAccordion] = React.useState("-1");
   let [activeKeys, setActiveKeys] = React.useState([]);
   let [currentMenu, setCurrentMenu] = React.useState("");
 
@@ -22,6 +23,14 @@ export function Menu(props) {
     },
     [dinnerKeys, lunchKeys]
   );
+
+  const toggleAccordion = (menu, key, index) => {
+    if (showAccordion === `${menu}-${key}-${index}`) {
+      setShowAccordion("-1");
+    } else {
+      setShowAccordion(`${menu}-${key}-${index}`);
+    }
+  };
 
   React.useEffect(() => {
     let startMenu = defaultMenu || "Lunch";
@@ -68,28 +77,36 @@ export function Menu(props) {
       {activeKeys.map((key, index) => {
         return (
           <>
-            <h3
-              className="menu-section-header"
-              id={key}
-              key={`menu-key-${index}`}
-            >
+            <h3 className="menu-section-header" key={`menu-key-${index}`}>
               {key}
             </h3>
+            <div className="menu-section-anchor" id={key}></div>
             {menuData[currentMenu][key].map((meal, mealIndex) => {
               return (
                 <div className="menu-accordion-container">
-                  {type && (
+                  {type && meal.price && (
                     <div
                       onClick={() => {
-                        props.onAddButtonClicked(meal);
+                        meal.price.split("|").length === 2
+                          ? toggleAccordion(currentMenu, key, mealIndex)
+                          : props.onAddButtonClicked(meal);
                       }}
                       className="add-to-order"
                     >
                       +
                     </div>
                   )}
-                  <Accordion defaultActiveKey="-1" style={{ width: "100%" }}>
-                    <CustomAccordion eventKey={mealIndex}>
+                  {type && !meal.price && <div className="left-padding" />}
+                  <Accordion
+                    style={{ width: "100%" }}
+                    activeKey={showAccordion}
+                  >
+                    <CustomAccordion
+                      eventKey={`${currentMenu}-${key}-${mealIndex}`}
+                      onElementClicked={() => {
+                        toggleAccordion(currentMenu, key, mealIndex);
+                      }}
+                    >
                       <MenuItem
                         menukey={`menu-item-${mealIndex}`}
                         name={meal.name}
@@ -97,10 +114,19 @@ export function Menu(props) {
                         description={meal.description}
                       />
                     </CustomAccordion>
-                    <Accordion.Collapse eventKey={mealIndex}>
+                    <Accordion.Collapse
+                      eventKey={`${currentMenu}-${key}-${mealIndex}`}
+                    >
                       <MealInformation
-                        ingredients={meal.ingredients}
-                        picture={meal.picture}
+                        meal={meal}
+                        showPriceOptions={
+                          type && meal.price.split("|").length === 2
+                            ? true
+                            : false
+                        }
+                        optionNames={meal.description.split("|")}
+                        priceOptions={meal.price.split("|")}
+                        onPriceOptionClicked={props.onAddButtonClicked}
                       />
                     </Accordion.Collapse>
                   </Accordion>

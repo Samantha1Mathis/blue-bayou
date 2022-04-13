@@ -47,6 +47,13 @@
     border-radius: 5px;
 }
 
+.menu-section-anchor {
+    display: block;
+    height: 150px; /*same height as header*/
+    margin-top: -150px; /*same height as header*/
+    visibility: hidden;
+}
+
 .meal-container {
     width: 100%;
     border-radius: 5px;
@@ -100,4 +107,11 @@
 .add-to-order:hover {
     background: rgba(95, 158, 160, 0.6);
     cursor: pointer;
+}
+
+.left-padding {
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    margin-right: 5px;
 }

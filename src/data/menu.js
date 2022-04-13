@@ -295,26 +295,26 @@ let menuData = {
         name: "Assorted Fountain Beverages",
         description:
           "Coca-Cola®, Diet Coke®, Sprite®, Fanta® Orange, Barq's® Root Beer, and Iced Tea",
-        price: "",
+        price: "$3.00",
         ingredients:
           "Coca-Cola®, Diet Coke®, Sprite®, Fanta® Orange, Barq's® Root Beer, and Iced Tea",
       },
       {
         name: "Freshly Brewed Joffrey's Coffee®",
         description: "",
-        price: "",
+        price: "$3.00",
         ingredients: "",
       },
       {
         name: "Assorted Twinings of London® Teas",
         description: "",
-        price: "",
+        price: "$3.00",
         ingredients: "",
       },
       {
         name: "Hot Chocolate",
         description: "",
-        price: "",
+        price: "$3.00",
         ingredients: "",
       },
     ],
@@ -614,26 +614,26 @@ let menuData = {
         name: "Assorted Fountain Beverages",
         description:
           "Coca-Cola®, Diet Coke®, Sprite®, Fanta® Orange, Barq's® Root Beer, and Iced Tea",
-        price: "",
+        price: "$3.00",
         ingredients:
           "Coca-Cola®, Diet Coke®, Sprite®, Fanta® Orange, Barq's® Root Beer, and Iced Tea",
       },
       {
         name: "Freshly Brewed Joffrey's Coffee®",
         description: "",
-        price: "",
+        price: "$3.00",
         ingredients: "",
       },
       {
         name: "Assorted Twinings of London® Teas",
         description: "",
-        price: "",
+        price: "$3.00",
         ingredients: "",
       },
       {
         name: "Hot Chocolate",
         description: "",
-        price: "",
+        price: "$3.00",
         ingredients: "",
       },
     ],

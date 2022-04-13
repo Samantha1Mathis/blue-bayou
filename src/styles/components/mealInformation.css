@@ -14,3 +14,12 @@
     max-width: 300px;
     max-height: 300px;
 }
+
+.price-option-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.meal-information-price-option {
+    width: 50% !important;
+}

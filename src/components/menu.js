@@ -77,13 +77,10 @@ export function Menu(props) {
       {activeKeys.map((key, index) => {
         return (
           <>
-            <h3
-              className="menu-section-header"
-              id={key}
-              key={`menu-key-${index}`}
-            >
+            <h3 className="menu-section-header" key={`menu-key-${index}`}>
               {key}
             </h3>
+            <div className="menu-section-anchor" id={key}></div>
             {menuData[currentMenu][key].map((meal, mealIndex) => {
               return (
                 <div className="menu-accordion-container">

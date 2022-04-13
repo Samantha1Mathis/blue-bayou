@@ -52,7 +52,7 @@ function Checkout() {
     }
     setDisableTimes(times);
 
-    if (times[times.length - 1] >= new Date().setHours(11, 0)) {
+    if (times[times.length - 1] >= new Date().setHours(21, 0)) {
       setIsOpen(false);
     }
   }, []);

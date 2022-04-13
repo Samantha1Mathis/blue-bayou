@@ -67,7 +67,7 @@ export default function Payment(props) {
                 className="payment-input"
                 type="text"
                 id="name"
-                placeholder="Bojan Viner"
+                placeholder="Jack Sparrow"
               />{" "}
             </div>
           </div>
@@ -78,7 +78,7 @@ export default function Payment(props) {
                 className="payment-input"
                 type="text"
                 id="expNum"
-                placeholder="Exp. date"
+                placeholder="Exp. date (**/**)"
               />{" "}
             </div>
             <div className="col-2">
@@ -87,7 +87,7 @@ export default function Payment(props) {
                 className="payment-input"
                 type="text"
                 id="cvvNum"
-                placeholder="CVV"
+                placeholder="CVV (***)"
               />{" "}
             </div>
           </div>{" "}

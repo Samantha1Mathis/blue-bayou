@@ -63,7 +63,11 @@ function Checkout() {
 
   const onCheckoutButtonClicked = () => {
     setErrorMessage(false);
-    setActiveKey("1");
+    if (type === "togo") {
+      setActiveKey("1");
+    } else {
+      setActiveKey("2");
+    }
   };
 
   const onSelectButtonClicked = () => {
@@ -78,9 +82,12 @@ function Checkout() {
   };
 
   const onConfirmButtonClicked = () => {
-    if (order.length > 0 && startTime && paymentSuccess) {
+    if (order.length > 0 && type === "togo" && startTime && paymentSuccess) {
       deleteFromLocalStorage("order");
-      navigate("/complete?type=order");
+      navigate("/complete?type=togo");
+    } else if (order.length > 0 && type === "inperson" && paymentSuccess) {
+      deleteFromLocalStorage("order");
+      navigate("/complete?type=inperson");
     } else if (!isOpen) {
       setErrorMessage("We're not open! Please try again tomorrow.");
     } else if (order.length === 0) {
@@ -179,15 +186,17 @@ function Checkout() {
                 )}
                 <OrderSummary order={order} showTax={true} />
                 <div className="horizontal-break"></div>
-                <div>
-                  <span>Pickup Time: </span>
-                  <DatePicker
-                    selected={startTime}
-                    timeCaption="Time"
-                    dateFormat="h:mm aa"
-                    disabled
-                  />
-                </div>
+                {type === "togo" && (
+                  <div>
+                    <span>Pickup Time: </span>
+                    <DatePicker
+                      selected={startTime}
+                      timeCaption="Time"
+                      dateFormat="h:mm aa"
+                      disabled
+                    />
+                  </div>
+                )}
               </div>
               <Button
                 variant="outline-primary"

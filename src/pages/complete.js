@@ -18,16 +18,16 @@ export default function Complete() {
       reservation = true;
       setFirstMsg("Reservation Complete");
       setMsg("We look forward to having you dine with us!");
-    } else if (transactionType === "order") {
+    } else if (transactionType === "togo" || transactionType === "inperson") {
       order = true;
-      setFirstMsg("Transaction Complete")
+      setFirstMsg("Transaction Complete");
       setMsg("Thank you for your purchase! Have a magical day!");
     }
   }, []);
 
   return (
     <>
-      < NavbarCustom />
+      <NavbarCustom />
       <div
         className="text-center"
         style={{

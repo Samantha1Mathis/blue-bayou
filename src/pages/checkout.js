@@ -112,28 +112,41 @@ function Checkout() {
                 <h3 className="checkout-order-header">Pick Up Time</h3>
               </Accordion.Header>
               <Accordion.Body>
-                <p style={{ textAlign: "left" }}>
-                  Select when you would like to pick your food up
-                </p>
-                <DatePicker
-                  selected={startTime}
-                  onChange={(time) => setStartTime(time)}
-                  minTime={new Date().setHours(11, 0)}
-                  maxTime={new Date().setHours(21, 0)}
-                  excludeTimes={disableTimes}
-                  showTimeSelect
-                  showTimeSelectOnly
-                  timeIntervals={15}
-                  timeCaption="Time"
-                  dateFormat="h:mm aa"
-                  placeholderText="Pick a time for pickup"
-                />
-                <Button
-                  variant="outline-primary"
-                  onClick={onSelectButtonClicked}
-                >
-                  Select
-                </Button>
+                {!(
+                  disableTimes[disableTimes.length - 1] ===
+                  new Date().setHours(21, 0)
+                ) && (
+                  <>
+                    <p style={{ textAlign: "left" }}>
+                      Select when you would like to pick your food up
+                    </p>
+                    <DatePicker
+                      selected={startTime}
+                      onChange={(time) => setStartTime(time)}
+                      minTime={new Date().setHours(11, 0)}
+                      maxTime={new Date().setHours(21, 0)}
+                      excludeTimes={disableTimes}
+                      showTimeSelect
+                      showTimeSelectOnly
+                      timeIntervals={15}
+                      timeCaption="Time"
+                      dateFormat="h:mm aa"
+                      placeholderText="Pick a time for pickup"
+                    />
+                    <Button
+                      variant="outline-primary"
+                      onClick={onSelectButtonClicked}
+                    >
+                      Select
+                    </Button>
+                  </>
+                )}
+                {disableTimes[disableTimes.length - 1] ===
+                  new Date().setHours(21, 0) && (
+                  <p style={{ textAlign: "left" }}>
+                    We're not open! Please try again tomorrow.
+                  </p>
+                )}
               </Accordion.Body>
             </Accordion.Item>
           )}

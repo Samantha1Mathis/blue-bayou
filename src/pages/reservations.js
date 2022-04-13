@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import "../styles/pages/home.css";
 export default function Reservations() {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(null);
   const d = new Date();
   let disableTime = [d.setHours(13, 0), d.setHours(6, 30), d.setHours(4, 0)];
   const filterPassedTime = (time) => {
@@ -16,7 +16,8 @@ export default function Reservations() {
 
     return currentDate.getTime() < selectedDate.getTime();
   };
-  const routeChange = () => (window.location.href = "/#/complete?type=reservation");
+  const routeChange = () =>
+    (window.location.href = "/#/complete?type=reservation");
   return (
     <>
       <NavbarCustom />
@@ -49,6 +50,7 @@ export default function Reservations() {
             <DatePicker
               style={{ position: "relative", margin: "40px" }}
               showTimeSelect
+              inline
               dateFormat="MMMM d, yyyy h:mmaa"
               excludeDates={[
                 new Date("2022-04-08"),

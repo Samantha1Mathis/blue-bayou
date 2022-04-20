@@ -1,7 +1,7 @@
 import queryString from "query-string";
 
 export const extractQueryParam = (key) => {
-  let params = queryString.parse(window.location.hash);
+  let params = queryString.parse(window.location.href);
 
   for (let param of Object.keys(params)) {
     if (param.includes(key)) {

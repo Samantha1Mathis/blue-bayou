@@ -5,15 +5,11 @@ import img3 from "../images/home-images/1200x0.jpg";
 import img4 from "../images/home-images/BlueBayouCover-Pugh.jpg";
 import img5 from "../images/home-images/rsz_img_5850-1-2.jpg";
 import img6 from "../images/home-images/39512467_1070729289743370_4924584105451978752_n-1.jpg";
-import img7 from "../images/home-images/piratetriomarc.jpg";
-import img8 from "../images/home-images/yefzfoz9w8821.jpg";
-import img9 from "../images/home-images/Pirates-concept-artwork.jpg";
 import Carousel from "react-bootstrap/Carousel";
 import { NavbarCustom } from "../components/navbar";
 import "../styles/pages/home.css";
 import { Menu } from "../components/menu";
-import Sound from "react-sound";
-import banjo from "../images/home-images/banjo.mp3";
+
 export default function Home() {
   return (
     <>

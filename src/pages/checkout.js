@@ -16,6 +16,7 @@ import { extractQueryParam } from "../utils/window";
 function Checkout() {
   const navigate = useNavigate();
 
+  let [tip, setTip] = React.useState("");
   let [type, setType] = React.useState("");
   let [order, setOrder] = React.useState([]);
   let [startTime, setStartTime] = React.useState(null);
@@ -24,6 +25,7 @@ function Checkout() {
   let [paymentSuccess, setPaymentSuccess] = React.useState(false);
   let [isOpen, setIsOpen] = React.useState(true);
   let [errorMessage, setErrorMessage] = React.useState("");
+  let [tipErrorMessage, setTipErrorMessage] = React.useState("");
 
   React.useEffect(() => {
     let orderType = extractQueryParam("type");
@@ -62,6 +64,13 @@ function Checkout() {
   };
 
   const onCheckoutButtonClicked = () => {
+    let priceReg = /\$[0-9]+\.[0-9][0-9]/;
+    if (type === "inperson" && !priceReg.test(tip)) {
+      setTipErrorMessage("Please enter a valid tip in the form $x.xx");
+      return;
+    }
+    setTipErrorMessage("");
+
     setErrorMessage(false);
     if (type === "togo") {
       setActiveKey("1");
@@ -92,7 +101,7 @@ function Checkout() {
       setErrorMessage("We're not open! Please try again tomorrow.");
     } else if (order.length === 0) {
       setErrorMessage("You need to add something to your order to checkout!");
-    } else if (!startTime) {
+    } else if (type === "togo" && !startTime) {
       setErrorMessage("You need to set a pick up time!");
     } else if (!paymentSuccess) {
       setErrorMessage("You need to actually pay for what you order!");
@@ -119,6 +128,23 @@ function Checkout() {
             </Accordion.Header>
             <Accordion.Body>
               <OrderSummary order={order} showTax={true} />
+              {type === "inperson" && (
+                <>
+                  {tipErrorMessage && (
+                    <div className="error-message">{tipErrorMessage}</div>
+                  )}
+                  <div className="tip-container">
+                    <div className="order-item-name">Tip:</div>
+                    <input
+                      className="order-item-price"
+                      type="text"
+                      placeholder={"$x.xx"}
+                      value={tip}
+                      onChange={(e) => setTip(e.target.value)}
+                    ></input>
+                  </div>
+                </>
+              )}
               <Button
                 variant="outline-primary"
                 onClick={onCheckoutButtonClicked}
@@ -172,7 +198,7 @@ function Checkout() {
               <h3 className="checkout-order-header">Payment Information</h3>
             </Accordion.Header>
             <Accordion.Body>
-              <Payment onPayButtonClicked={onPayButtonClicked} />
+              <Payment type={type} onPayButtonClicked={onPayButtonClicked} />
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="3">
@@ -184,7 +210,12 @@ function Checkout() {
                 {errorMessage && (
                   <div className="error-message">{errorMessage}</div>
                 )}
-                <OrderSummary order={order} showTax={true} />
+                <OrderSummary
+                  order={order}
+                  showTax={true}
+                  tip={tip}
+                  showTip={type === "inperson" ? true : false}
+                />
                 <div className="horizontal-break"></div>
                 {type === "togo" && (
                   <div>

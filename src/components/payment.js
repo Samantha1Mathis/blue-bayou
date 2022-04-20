@@ -1,8 +1,11 @@
+import React from "react";
 import "../styles/components/payment.css";
 import Button from "react-bootstrap/Button";
 
 export default function Payment(props) {
   let { onPayButtonClicked } = props;
+
+  let [errorMessage, setErrorMessage] = React.useState("");
 
   const cardRegex = /^[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}/;
   const expRegex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
@@ -27,15 +30,16 @@ export default function Payment(props) {
       // const routeChange = () => (window.location.href = "/#/complete");
       // routeChange();
     } else {
-      document.getElementById("error").innerText = "ERROR with input";
+      setErrorMessage("Error with your input!");
+      // document.getElementById("error").innerText = "ERROR with input";
     }
   };
 
   return (
     <>
       <div className="payment-card mb-50">
-        <div className="payment-scard-title mx-auto"> Payment </div>
-        <p id="error"></p>
+        <h3> Payment </h3>
+        {errorMessage && <div className="error-message">{errorMessage}</div>}
         <form>
           {" "}
           <div className="row row-1">

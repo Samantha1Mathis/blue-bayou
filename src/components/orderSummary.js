@@ -2,18 +2,28 @@ import React from "react";
 import "../styles/components/orderSummary.css";
 
 function OrderSummary(props) {
-  let { order, showTax, editable, onItemQuantityChange } = props;
+  let { order, showTax, tip, showTip, editable, onItemQuantityChange } = props;
 
   const taxRate = 0.0725;
+
+  let shownTip = "";
+  let priceReg = /\$[0-9]+\.[0-9][0-9]/;
+  if (priceReg.test(tip)) {
+    shownTip = tip;
+  } else {
+    shownTip = "$0.00";
+  }
+  let tipAmt = parseFloat(shownTip.substring(1));
 
   let initTotal = 0;
   for (let item of order) {
     initTotal += parseFloat(item.price.substr(1)) * item.quantity;
   }
-  // Round values to 2 decimal places.
 
+  // Round values to 2 decimal places.
   let taxAmt = Math.round(initTotal * taxRate * 100) / 100;
   let total = Math.round((initTotal + taxAmt) * 100) / 100;
+  let tipTotal = Math.round((initTotal + taxAmt + tipAmt) * 100) / 100;
 
   const makeDollarString = (amt) => {
     let amtString = amt.toString();
@@ -80,6 +90,14 @@ function OrderSummary(props) {
           {showTax ? makeDollarString(total) : makeDollarString(initTotal)}
         </div>
       </div>
+      {showTip && (
+        <div className="order-summary-item-container">
+          <div className="order-summary-item-name">Tip:</div>
+          <div className="order-summary-item-price">
+            {makeDollarString(tipTotal)}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

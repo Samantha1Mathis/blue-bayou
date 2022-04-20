@@ -36,6 +36,7 @@
 .order-item-name {
     width: 75%;
     text-align: left;
+    font-weight: 600;
 }
 
 .order-item-price {
@@ -51,4 +52,17 @@
     border-radius: 5px;
     padding: 5px;
     font-weight: bold;
+}
+
+.tip-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.tip-name-field {
+    width: 75%;
+}
+
+.tip-input-field {
+    width: 25%;
 }

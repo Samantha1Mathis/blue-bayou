@@ -1,8 +1,15 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .contact-form {
     text-align: left;
     background-color: white;
-    margin-left: 25%;
-    margin-right: 25%;
+    width: 100%;
+    max-width: 800px;
 }
 
 .contact-page-form-group {
@@ -17,5 +24,5 @@
 
 .form-submit {
     margin-bottom: 25px;
-    width: 900px;
+    max-width: 900px;
 }

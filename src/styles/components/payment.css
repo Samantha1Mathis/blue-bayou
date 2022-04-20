@@ -3,7 +3,9 @@
     margin: auto;
     width: 600px;
     padding: 3rem 3.5rem;
-    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+    /* box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19) */
+    border: 1px solid lightgray;
+    border-radius: 5px;
 }
 
 .mt-50 {
@@ -95,8 +97,9 @@ form .row-1 {
     width: 100%;
     min-width: unset;
     border-radius: 5px;
-    background-color: rgba(221, 228, 236, 0.301);
-    border-color: rgba(221, 228, 236, 0.459);
+    /* background-color: rgba(221, 228, 236, 0.301); */
+    /* border-color: rgba(221, 228, 236, 0.459); */
+    border-color: lightgray;
     margin: 2vh 0;
     overflow: hidden
 }
@@ -137,7 +140,7 @@ form .row .col-2 {
 
 #card-inner {
     font-size: 0.7rem;
-    color: gray
+    /* color: gray */
 }
 
 .three .col-7 {
@@ -157,8 +160,9 @@ form .row .col-2 {
     width: 100%;
     min-width: unset;
     border-radius: 5px;
-    background-color: rgba(221, 228, 236, 0.301);
-    border-color: rgba(221, 228, 236, 0.459);
+    /* background-color: rgba(221, 228, 236, 0.301);, */
+    /* border-color: rgba(221, 228, 236, 0.459); */
+    border-color: lightgray;
     margin: 2vh 0;
     width: fit-content;
     overflow: hidden

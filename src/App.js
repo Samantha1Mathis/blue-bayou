@@ -12,7 +12,7 @@ import Checkout from "./pages/checkout";
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Index />}>
           <Route path="" element={<Home />} />
@@ -24,7 +24,7 @@ function App() {
           <Route path="complete" element={<Complete />} />
         </Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
